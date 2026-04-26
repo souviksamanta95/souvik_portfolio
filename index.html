@@ -262,6 +262,50 @@
     /* ── About ── */
     #about { background: var(--bg2); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    /* ── GitHub Activity ── */
+    .github-activity {
+      margin-top: 56px; padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .github-activity > .section-tag { margin-bottom: 8px; }
+    .github-activity > h3 {
+      font-size: 22px; font-weight: 700; letter-spacing: -0.5px;
+      margin-bottom: 6px; color: var(--text);
+    }
+    .github-activity > p {
+      font-size: 14px; color: var(--muted); margin-bottom: 40px; line-height: 1.7;
+    }
+    .github-accounts { display: flex; flex-direction: column; gap: 36px; }
+    .github-account-block {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .github-account-header {
+      padding: 18px 24px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    .github-account-title {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .github-account-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 4px;
+    }
+    .badge-work { background: rgba(79,142,247,0.15); color: var(--accent); }
+    .badge-personal { background: rgba(168,85,247,0.12); color: #c084fc; }
+    .github-account-name {
+      font-size: 14px; font-weight: 600; color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .github-account-desc { font-size: 12px; color: var(--muted); }
+    .github-account-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+    .github-stats-row { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+    .github-chart-img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .github-stats-img { height: 160px; width: auto; border-radius: 6px; }
+    @media (max-width: 768px) {
+      .github-stats-row { flex-direction: column; }
+      .github-stats-img { width: 100%; height: auto; }
+    }
     .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 16px; line-height: 1.8; }
     .about-text p strong { color: var(--text); }
     .about-text p:last-child { margin-bottom: 0; }
@@ -529,6 +573,78 @@
     .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
     .contact-link svg { width: 18px; height: 18px; }
 
+    /* ── Writing ── */
+    #writing { background: var(--bg2); }
+    .posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .post-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 28px 24px;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      text-decoration: none;
+    }
+    .post-card:hover {
+      border-color: rgba(79,142,247,0.4);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+      transform: translateY(-2px);
+    }
+    .post-meta { display: flex; align-items: center; gap: 10px; }
+    .post-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--accent); background: rgba(79,142,247,0.12);
+      padding: 3px 8px; border-radius: 4px;
+    }
+    .post-date { font-size: 12px; color: var(--muted); }
+    .post-title { font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.45; }
+    .post-summary { font-size: 13px; color: var(--muted); line-height: 1.7; flex: 1; }
+    .post-footer {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--accent);
+      margin-top: 4px;
+    }
+    .post-footer svg { width: 13px; height: 13px; }
+    .posts-loading { text-align: center; color: var(--muted); font-size: 14px; padding: 48px 0; }
+
+    /* ── Contact Form ── */
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 48px; }
+    .contact-form-wrapper { display: flex; flex-direction: column; gap: 0; }
+    .contact-form-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 6px; margin-top: 16px;
+    }
+    .contact-form-label:first-child { margin-top: 0; }
+    .contact-form-input, .contact-form-textarea {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 11px 14px;
+      color: var(--text); font-size: 14px; font-family: inherit;
+      width: 100%; box-sizing: border-box;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+    .contact-form-input:focus, .contact-form-textarea:focus {
+      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,142,247,0.12);
+    }
+    .contact-form-textarea { resize: vertical; min-height: 120px; }
+    .contact-form-submit {
+      margin-top: 20px; background: var(--accent); color: #fff;
+      border: none; border-radius: 8px; padding: 12px 28px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      font-family: inherit; transition: background 0.2s ease, transform 0.15s ease;
+      align-self: flex-start;
+    }
+    .contact-form-submit:hover { background: #3a6fdc; transform: translateY(-1px); }
+    .contact-form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-success {
+      display: none; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 8px; padding: 14px 18px; color: #4ade80;
+      font-size: 14px; margin-top: 16px;
+    }
+    .contact-details-col { display: flex; flex-direction: column; gap: 12px; padding-top: 4px; }
+    @media (max-width: 768px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── Footer ── */
     footer {
       border-top: 1px solid var(--border);
@@ -565,6 +681,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#writing">Writing</a></li>
         <li><a href="Souvik_Samanta_CV_FT.pdf" download class="nav-cta" style="background:transparent;border:1px solid var(--border);color:var(--muted);">↓ CV</a></li>
         <li><a href="#contact" class="nav-cta">Work With Me</a></li>
       </ul>
@@ -684,6 +801,74 @@
           </div>
         </div>
       </div>
+
+      <!-- GitHub Activity -->
+      <div class="github-activity">
+        <div class="section-tag">// code activity</div>
+        <h3>GitHub Contributions</h3>
+        <p>I maintain two separate GitHub accounts — one for professional work at Coursera, one for personal projects and open-source. Most of the production-grade ML and analytics work lives in the work account against private repos.</p>
+
+        <div class="github-accounts">
+
+          <!-- Work account -->
+          <div class="github-account-block">
+            <div class="github-account-header">
+              <div class="github-account-title">
+                <span class="github-account-badge badge-work">Work</span>
+                <a href="https://github.com/ssamanta-coursera" target="_blank" rel="noopener" class="github-account-name" style="text-decoration:none;color:inherit;">ssamanta-coursera</a>
+              </div>
+              <span class="github-account-desc">Production ML, lifecycle analytics, experimentation — Coursera private repos</span>
+            </div>
+            <div class="github-account-body">
+              <div class="github-stats-row">
+                <img
+                  class="github-stats-img"
+                  src="https://github-readme-stats.vercel.app/api?username=ssamanta-coursera&count_private=true&include_all_commits=true&show_icons=true&hide_border=true&bg_color=161b22&text_color=e6edf3&icon_color=4f8ef7&title_color=4f8ef7&hide=issues,contribs"
+                  alt="Coursera GitHub stats"
+                  loading="lazy"
+                />
+              </div>
+              <img
+                class="github-chart-img"
+                src="https://ghchart.rshah.org/4f8ef7/ssamanta-coursera"
+                alt="Coursera GitHub contribution graph — last 12 months"
+                loading="lazy"
+              />
+              <div style="font-size:11px;color:var(--muted);opacity:0.6;">↑ Last 12 months · Stats card reflects all-time commits across private and public repos</div>
+            </div>
+          </div>
+
+          <!-- Personal account -->
+          <div class="github-account-block">
+            <div class="github-account-header">
+              <div class="github-account-title">
+                <span class="github-account-badge badge-personal">Personal</span>
+                <a href="https://github.com/souviksamanta95" target="_blank" rel="noopener" class="github-account-name" style="text-decoration:none;color:inherit;">souviksamanta95</a>
+              </div>
+              <span class="github-account-desc">Side projects, experiments, and this portfolio site</span>
+            </div>
+            <div class="github-account-body">
+              <div class="github-stats-row">
+                <img
+                  class="github-stats-img"
+                  src="https://github-readme-stats.vercel.app/api?username=souviksamanta95&count_private=true&include_all_commits=true&show_icons=true&hide_border=true&bg_color=161b22&text_color=e6edf3&icon_color=c084fc&title_color=c084fc&hide=issues,contribs"
+                  alt="Personal GitHub stats"
+                  loading="lazy"
+                />
+              </div>
+              <img
+                class="github-chart-img"
+                src="https://ghchart.rshah.org/c084fc/souviksamanta95"
+                alt="Personal GitHub contribution graph — last 12 months"
+                loading="lazy"
+              />
+              <div style="font-size:11px;color:var(--muted);opacity:0.6;">↑ Last 12 months · Includes this portfolio site and personal utilities</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1082,35 +1267,75 @@
     </div>
   </section>
 
+  <!-- ── Writing ── -->
+  <section id="writing">
+    <div class="container">
+      <div class="section-tag">// notes & thinking</div>
+      <h2 class="section-title">Writing</h2>
+      <p class="section-sub">Career lessons, personal stories, and the occasional data take — things I've lived, not just read about.</p>
+      <div id="posts-grid" class="posts-grid">
+        <div class="posts-loading">Loading posts…</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Contact ── -->
   <section id="contact">
     <div class="container">
-      <div class="contact-inner">
-        <div class="section-tag">// let's connect</div>
-        <h2 class="section-title">Have a problem worth solving?</h2>
-        <p class="section-sub">Whether you're looking for a senior data scientist to join your team, or a consultant to help you make sense of your data — I'm happy to talk.</p>
-        <a href="https://calendly.com/souviksamanta95/30min" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;margin-bottom:32px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Book a Free 30-min Discovery Call
-        </a>
-        <div class="contact-links">
-          <a href="mailto:souviksamanta95@gmail.com" class="contact-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            souviksamanta95@gmail.com
-          </a>
-          <a href="tel:+917407364226" class="contact-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
-            (+91) 7407 364 226
-          </a>
-          <a href="https://linkedin.com/in/souviksamanta95" target="_blank" rel="noopener" class="contact-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://github.com/souviksamanta95/" target="_blank" rel="noopener" class="contact-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            GitHub
-          </a>
+      <div class="section-tag">// let's connect</div>
+      <h2 class="section-title">Have a problem worth solving?</h2>
+      <p class="section-sub">Whether you're looking for a senior data scientist to join your team, or a consultant to help you make sense of your data — I'm happy to talk.</p>
+
+      <div class="contact-layout">
+
+        <!-- Form -->
+        <div class="contact-form-wrapper">
+          <form id="contact-form" action="https://formspree.io/f/maqakvkg" method="POST">
+            <label class="contact-form-label" for="cf-name">Your name</label>
+            <input class="contact-form-input" type="text" id="cf-name" name="name" placeholder="Priya Sharma" required />
+
+            <label class="contact-form-label" for="cf-email">Email address</label>
+            <input class="contact-form-input" type="email" id="cf-email" name="email" placeholder="priya@company.com" required />
+
+            <label class="contact-form-label" for="cf-subject">What's this about?</label>
+            <input class="contact-form-input" type="text" id="cf-subject" name="subject" placeholder="Consulting project / Full-time role / Quick question" />
+
+            <label class="contact-form-label" for="cf-message">Tell me more</label>
+            <textarea class="contact-form-textarea" id="cf-message" name="message" placeholder="Brief description of what you're working on and how I can help…" required></textarea>
+
+            <button type="submit" class="contact-form-submit" id="cf-submit">Send Message →</button>
+          </form>
+          <div class="form-success" id="form-success">
+            ✓ Message sent! I usually reply within 24 hours.
+          </div>
         </div>
+
+        <!-- Contact links -->
+        <div class="contact-details-col">
+          <a href="https://calendly.com/souviksamanta95/30min" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;margin-bottom:8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book a Free 30-min Discovery Call
+          </a>
+          <div class="contact-links" style="flex-direction:column;gap:12px;">
+            <a href="mailto:souviksamanta95@gmail.com" class="contact-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              souviksamanta95@gmail.com
+            </a>
+            <a href="tel:+917407364226" class="contact-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+              (+91) 7407 364 226
+            </a>
+            <a href="https://linkedin.com/in/souviksamanta95" target="_blank" rel="noopener" class="contact-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://github.com/souviksamanta95/" target="_blank" rel="noopener" class="contact-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1151,6 +1376,67 @@
       el.dataset.delay = i * 150;
       observer.observe(el);
     });
+
+    // ── Posts feed from posts.json ──
+    (async () => {
+      const grid = document.getElementById('posts-grid');
+      try {
+        const res = await fetch('posts.json');
+        if (!res.ok) throw new Error('Not found');
+        const posts = await res.json();
+        if (!posts.length) { grid.innerHTML = '<p class="posts-loading">No posts yet.</p>'; return; }
+        grid.innerHTML = posts.map(p => {
+          const d = new Date(p.date);
+          const dateStr = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+          return `
+            <a class="post-card" href="${p.url}" target="_blank" rel="noopener">
+              <div class="post-meta">
+                <span class="post-tag">${p.theme}</span>
+                <span class="post-date">${dateStr}</span>
+              </div>
+              <div class="post-title">${p.title}</div>
+              <div class="post-summary">${p.summary}</div>
+              <div class="post-footer">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                Read on LinkedIn
+              </div>
+            </a>`;
+        }).join('');
+      } catch(e) {
+        grid.innerHTML = '<p class="posts-loading">Could not load posts.</p>';
+      }
+    })();
+
+    // ── Contact form (Formspree) ──
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('cf-submit');
+        const success = document.getElementById('form-success');
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            success.style.display = 'block';
+          } else {
+            btn.disabled = false;
+            btn.textContent = 'Send Message →';
+            alert('Something went wrong. Please email me directly.');
+          }
+        } catch(err) {
+          btn.disabled = false;
+          btn.textContent = 'Send Message →';
+          alert('Network error. Please email me directly.');
+        }
+      });
+    }
 
     // Active nav link on scroll
     const sections = document.querySelectorAll('section[id]');

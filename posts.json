@@ -1,0 +1,38 @@
+[
+  {
+    "id": 3,
+    "title": "I quit Tech Mahindra without a backup plan. Here's what happened next.",
+    "date": "2026-04-20",
+    "theme": "Career Story",
+    "summary": "Impulsive resignation. No offer in hand. And a lesson about trusting your own decisions that I still carry.",
+    "url": "https://www.linkedin.com/posts/souviksamanta95_careergrowth-datascience-believeinyourself-activity-7451864785257648128-46pa",
+    "tags": ["Career", "DataScience", "Growth"]
+  },
+  {
+    "id": 2,
+    "title": "Guitar, bass, drums — and why I still make time for none of them.",
+    "date": "2026-04-13",
+    "theme": "Personal",
+    "summary": "Bengali family. Forced music classes. Discovered guitar in college. Now I play drums as a stress buster. Not productive. Just human.",
+    "url": "https://www.linkedin.com/posts/souviksamanta95_mentalhealth-worklifebalance-personalgrowth-activity-7449328085721808896-Wpzp",
+    "tags": ["MentalHealth", "WorkLifeBalance", "PersonalGrowth"]
+  },
+  {
+    "id": 1,
+    "title": "80% answer today beats 100% answer next week.",
+    "date": "2026-04-06",
+    "theme": "Professional Insight",
+    "summary": "The tension between being accurate and being fast in data science. Perfectionism in analysis has a real cost — and it's usually paid by the business.",
+    "url": "https://www.linkedin.com/posts/souviksamanta95_datascience-analytics-growthmindset-activity-7446791316576960512-c_Y9",
+    "tags": ["DataScience", "Analytics", "GrowthMindset"]
+  },
+  {
+    "id": 0,
+    "title": "Nothing makes someone more happy when you…",
+    "date": "2023-01-27",
+    "theme": "Recognition",
+    "summary": "An older post — update this summary with what the post was actually about.",
+    "url": "https://www.linkedin.com/posts/souviksamanta95_nothing-makes-someone-more-happy-when-you-activity-7021114193588232192-uUuX",
+    "tags": []
+  }
+]
