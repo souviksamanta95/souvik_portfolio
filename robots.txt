@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://souvik.cc/sitemap.xml
