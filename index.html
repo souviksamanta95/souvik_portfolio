@@ -44,7 +44,8 @@
         "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
         "sameAs": [
           "https://linkedin.com/in/souviksamanta95",
-          "https://github.com/souviksamanta95"
+          "https://github.com/souviksamanta95",
+          "https://github.com/ssamanta-coursera"
         ],
         "knowsAbout": ["Machine Learning", "Data Science", "CRM Analytics", "Churn Prediction", "Lead Scoring", "A/B Testing", "Databricks", "Python", "SQL", "Power BI", "Looker"]
       },
@@ -275,30 +276,21 @@
     .github-activity > p {
       font-size: 14px; color: var(--muted); margin-bottom: 40px; line-height: 1.7;
     }
-    .github-accounts { display: flex; flex-direction: column; gap: 36px; }
-    .github-account-block {
+    .github-block {
       background: var(--bg); border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
     }
-    .github-account-header {
+    .github-block-header {
       padding: 18px 24px; border-bottom: 1px solid var(--border);
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
     }
-    .github-account-title {
-      display: flex; align-items: center; gap: 10px;
-    }
-    .github-account-badge {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; padding: 3px 8px; border-radius: 4px;
-    }
-    .badge-work { background: rgba(79,142,247,0.15); color: var(--accent); }
-    .badge-personal { background: rgba(168,85,247,0.12); color: #c084fc; }
-    .github-account-name {
+    .github-block-name {
       font-size: 14px; font-weight: 600; color: var(--text);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'JetBrains Mono', monospace; text-decoration: none;
     }
-    .github-account-desc { font-size: 12px; color: var(--muted); }
-    .github-account-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+    .github-block-name:hover { color: var(--accent); }
+    .github-block-desc { font-size: 12px; color: var(--muted); }
+    .github-block-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
     .github-stats-row { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
     .github-chart-img { width: 100%; height: auto; display: block; border-radius: 4px; }
     .github-stats-img { height: 160px; width: auto; border-radius: 6px; }
@@ -806,67 +798,32 @@
       <div class="github-activity">
         <div class="section-tag">// code activity</div>
         <h3>GitHub Contributions</h3>
-        <p>I maintain two separate GitHub accounts — one for professional work at Coursera, one for personal projects and open-source. Most of the production-grade ML and analytics work lives in the work account against private repos.</p>
+        <p>Production ML, lifecycle analytics, and experimentation at Coursera alongside personal projects — all under one account, including private repo activity.</p>
 
-        <div class="github-accounts">
-
-          <!-- Work account -->
-          <div class="github-account-block">
-            <div class="github-account-header">
-              <div class="github-account-title">
-                <span class="github-account-badge badge-work">Work</span>
-                <a href="https://github.com/ssamanta-coursera" target="_blank" rel="noopener" class="github-account-name" style="text-decoration:none;color:inherit;">ssamanta-coursera</a>
-              </div>
-              <span class="github-account-desc">Production ML, lifecycle analytics, experimentation — Coursera private repos</span>
-            </div>
-            <div class="github-account-body">
-              <div class="github-stats-row">
-                <img
-                  class="github-stats-img"
-                  src="https://github-readme-stats.vercel.app/api?username=ssamanta-coursera&count_private=true&include_all_commits=true&show_icons=true&hide_border=true&bg_color=161b22&text_color=e6edf3&icon_color=4f8ef7&title_color=4f8ef7&hide=issues,contribs"
-                  alt="Coursera GitHub stats"
-                  loading="lazy"
-                />
-              </div>
+        <div class="github-block">
+          <div class="github-block-header">
+            <a href="https://github.com/souviksamanta95" target="_blank" rel="noopener" class="github-block-name">souviksamanta95</a>
+            <span class="github-block-desc">Includes private contributions — Coursera, side projects, and this portfolio</span>
+          </div>
+          <div class="github-block-body">
+            <div class="github-stats-row">
               <img
-                class="github-chart-img"
-                src="https://ghchart.rshah.org/4f8ef7/ssamanta-coursera"
-                alt="Coursera GitHub contribution graph — last 12 months"
+                class="github-stats-img"
+                src="https://github-readme-stats.vercel.app/api?username=souviksamanta95&count_private=true&include_all_commits=true&show_icons=true&hide_border=true&bg_color=161b22&text_color=e6edf3&icon_color=4f8ef7&title_color=4f8ef7&hide=issues,contribs"
+                alt="GitHub stats"
                 loading="lazy"
               />
-              <div style="font-size:11px;color:var(--muted);opacity:0.6;">↑ Last 12 months · Stats card reflects all-time commits across private and public repos</div>
             </div>
+            <img
+              class="github-chart-img"
+              src="https://ghchart.rshah.org/4f8ef7/souviksamanta95"
+              alt="GitHub contribution graph — last 12 months"
+              loading="lazy"
+            />
+            <div style="font-size:11px;color:var(--muted);opacity:0.6;">↑ Last 12 months · All-time commit stats include private repos across Coursera and personal work</div>
           </div>
-
-          <!-- Personal account -->
-          <div class="github-account-block">
-            <div class="github-account-header">
-              <div class="github-account-title">
-                <span class="github-account-badge badge-personal">Personal</span>
-                <a href="https://github.com/souviksamanta95" target="_blank" rel="noopener" class="github-account-name" style="text-decoration:none;color:inherit;">souviksamanta95</a>
-              </div>
-              <span class="github-account-desc">Side projects, experiments, and this portfolio site</span>
-            </div>
-            <div class="github-account-body">
-              <div class="github-stats-row">
-                <img
-                  class="github-stats-img"
-                  src="https://github-readme-stats.vercel.app/api?username=souviksamanta95&count_private=true&include_all_commits=true&show_icons=true&hide_border=true&bg_color=161b22&text_color=e6edf3&icon_color=c084fc&title_color=c084fc&hide=issues,contribs"
-                  alt="Personal GitHub stats"
-                  loading="lazy"
-                />
-              </div>
-              <img
-                class="github-chart-img"
-                src="https://ghchart.rshah.org/c084fc/souviksamanta95"
-                alt="Personal GitHub contribution graph — last 12 months"
-                loading="lazy"
-              />
-              <div style="font-size:11px;color:var(--muted);opacity:0.6;">↑ Last 12 months · Includes this portfolio site and personal utilities</div>
-            </div>
-          </div>
-
         </div>
+
       </div>
 
     </div>
