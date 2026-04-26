@@ -644,12 +644,51 @@
       font-size: 13px; color: var(--muted);
     }
 
+    /* ── Hamburger ── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; width: 36px; height: 36px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--muted); border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
       section { padding: 64px 0; }
-      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(10,10,10,0.98);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 0 16px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block; padding: 12px 24px;
+        font-size: 15px; color: var(--muted);
+        border-bottom: none;
+      }
+      .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+      .nav-links .nav-cta {
+        margin: 8px 16px 0;
+        display: block; text-align: center;
+        padding: 11px 20px; border-radius: 8px;
+      }
       .impact-strip { grid-template-columns: 1fr 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .experience-layout { grid-template-columns: 1fr; }
+      .skills-panel { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
       .services-layout { grid-template-columns: 1fr; gap: 40px; }
       .services-grid { grid-template-columns: 1fr; }
       .hero-name { letter-spacing: -1.5px; }
@@ -667,7 +706,10 @@
   <nav>
     <div class="nav-inner">
       <div class="nav-logo">souvik<span>.</span>cc</div>
-      <ul class="nav-links">
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -1332,6 +1374,20 @@
     document.querySelectorAll('.testimonial-card').forEach((el, i) => {
       el.dataset.delay = i * 150;
       observer.observe(el);
+    });
+
+    // ── Mobile nav hamburger ──
+    const hamburger = document.getElementById('nav-hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
     });
 
     // ── Posts feed from posts.json ──
