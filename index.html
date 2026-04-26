@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Souvik Samanta — Senior Data Scientist</title>
+  <meta name="description" content="Senior Data Scientist & ML Engineer. I help marketing and growth teams drive business impact through data — churn prediction, lead scoring, A/B testing, and executive dashboards." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #0b0f1a;
+      --bg2:       #111827;
+      --bg3:       #1a2235;
+      --border:    #1f2d45;
+      --text:      #e2e8f0;
+      --muted:     #8892a4;
+      --accent:    #4f8ef7;
+      --accent2:   #38bdf8;
+      --green:     #34d399;
+      --gold:      #fbbf24;
+      --radius:    12px;
+      --radius-sm: 8px;
+      --transition: 0.2s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--accent2); }
+    img { max-width: 100%; display: block; }
+
+    /* ── Layout ── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 0; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(11,15,26,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 24px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: 18px; color: var(--text);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; letter-spacing: 0.01em; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #fff !important;
+      padding: 8px 18px; border-radius: 8px; font-size: 13px !important;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--accent2); color: var(--bg) !important; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(79,142,247,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,142,247,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-glow {
+      position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 400px; z-index: 0;
+      background: radial-gradient(ellipse, rgba(79,142,247,0.12) 0%, transparent 70%);
+    }
+    /* ── Hero layout with photo ── */
+    .hero-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 72px; }
+    .hero-content { flex: 1; min-width: 0; }
+    .hero-photo-wrap {
+      flex-shrink: 0;
+      position: relative;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute; inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--green));
+      z-index: -1;
+    }
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute; inset: -24px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,142,247,0.15) 0%, transparent 70%);
+      z-index: -2;
+    }
+    .hero-photo {
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border: 3px solid var(--bg);
+    }
+    @media (max-width: 900px) {
+      .hero-inner { flex-direction: column-reverse; gap: 36px; text-align: center; }
+      .hero-ctas { justify-content: center; }
+      .hero-photo { width: 160px; height: 160px; }
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.25);
+      color: var(--accent2); font-size: 13px; font-weight: 500;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .hero-badge::before {
+      content: ''; width: 7px; height: 7px; background: var(--green);
+      border-radius: 50%; animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero-name {
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 700; line-height: 1.08;
+      letter-spacing: -2px; margin-bottom: 16px;
+    }
+    .hero-name .accent { color: var(--accent); }
+    .hero-title {
+      font-size: clamp(16px, 2.5vw, 20px); color: var(--muted);
+      font-weight: 400; margin-bottom: 24px;
+      font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em;
+    }
+    .hero-title span { color: var(--accent2); }
+    .hero-desc {
+      font-size: 18px; color: var(--muted); max-width: 580px;
+      line-height: 1.75; margin-bottom: 40px;
+    }
+    .hero-desc strong { color: var(--text); font-weight: 500; }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+    .btn-primary {
+      background: var(--accent); color: #fff; padding: 14px 28px;
+      border-radius: 10px; font-weight: 600; font-size: 15px;
+      transition: all var(--transition); display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--accent2); color: var(--bg); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border); padding: 14px 28px;
+      border-radius: 10px; font-weight: 500; font-size: 15px;
+      transition: all var(--transition); display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    /* ── Impact Strip ── */
+    .impact-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .impact-item {
+      background: var(--bg2); padding: 24px 20px; text-align: center;
+    }
+    .impact-number {
+      font-size: 36px; font-weight: 700; color: var(--accent);
+      letter-spacing: -1px; line-height: 1; margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .impact-label { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── Section Headers ── */
+    .section-tag {
+      display: inline-block; font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--accent); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 700;
+      letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 17px; color: var(--muted); max-width: 540px; line-height: 1.7; }
+
+    /* ── About ── */
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 16px; line-height: 1.8; }
+    .about-text p strong { color: var(--text); }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-stack { display: flex; flex-direction: column; gap: 20px; }
+    .stack-group {}
+    .stack-label {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent); font-weight: 600; font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 10px;
+    }
+    .stack-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 12px; font-weight: 500;
+      background: var(--bg3); border: 1px solid var(--border);
+      color: var(--muted); padding: 5px 12px; border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      transition: all var(--transition);
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Projects ── */
+    #projects { background: var(--bg); }
+    .projects-header { margin-bottom: 56px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .project-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px;
+      transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .project-card:hover { border-color: rgba(79,142,247,0.4); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .project-card:hover::before { opacity: 1; }
+    .project-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .project-company {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent); font-weight: 600; font-family: 'JetBrains Mono', monospace;
+    }
+    .project-type {
+      font-size: 11px; background: var(--bg3); border: 1px solid var(--border);
+      color: var(--muted); padding: 3px 10px; border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .project-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.3px; }
+    .project-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+    .project-metrics { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .metric-pill {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.2);
+      color: var(--green); font-size: 12px; font-weight: 600;
+      padding: 5px 12px; border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .metric-pill::before { content: '↑'; }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    /* ── Services ── */
+    #services { background: var(--bg2); }
+    .services-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
+    .services-intro {}
+    .services-intro .section-sub { margin-bottom: 32px; }
+    .avail-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+    }
+    .avail-title { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
+    .avail-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: var(--text); margin-bottom: 10px;
+    }
+    .avail-item:last-child { margin-bottom: 0; }
+    .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .service-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+      transition: all var(--transition);
+    }
+    .service-card:hover { border-color: rgba(79,142,247,0.35); }
+    .service-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 16px;
+    }
+    .service-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .service-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* ── Contact ── */
+    #contact {
+      background: var(--bg);
+      text-align: center;
+    }
+    .contact-inner { max-width: 560px; margin: 0 auto; }
+    .contact-inner .section-title { margin-bottom: 16px; }
+    .contact-inner .section-sub { margin: 0 auto 40px; }
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--text); padding: 12px 22px; border-radius: 10px;
+      font-size: 14px; font-weight: 500; transition: all var(--transition);
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .contact-link svg { width: 18px; height: 18px; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0; text-align: center;
+      font-size: 13px; color: var(--muted);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      section { padding: 64px 0; }
+      .nav-links { display: none; }
+      .impact-strip { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-layout { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-name { letter-spacing: -1.5px; }
+    }
+    @media (max-width: 480px) {
+      .impact-strip { grid-template-columns: 1fr 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">souvik<span>.</span>cc</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact" class="nav-cta">Work With Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Open to FT roles &amp; consulting</div>
+        <h1 class="hero-name">Souvik<br/><span class="accent">Samanta</span></h1>
+        <p class="hero-title">Senior Data Scientist &amp; <span>ML Engineer</span></p>
+        <p class="hero-desc">
+          I help <strong>marketing and growth teams</strong> drive business impact through data —
+          from churn prediction and lead scoring to campaign experiments and executive dashboards.
+          Not just a technical executor — a <strong>thought partner</strong>.
+        </p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            See My Work
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Work With Me
+          </a>
+        </div>
+        <div class="impact-strip">
+          <div class="impact-item">
+            <div class="impact-number">30%</div>
+            <div class="impact-label">Marketing Cost Saved</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-number">20%</div>
+            <div class="impact-label">Lead Quality Uplift</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-number">15%</div>
+            <div class="impact-label">Revenue Growth</div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-number">6+</div>
+            <div class="impact-label">Years in Data Science</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <img src="Souvik_Samanta.jpg" alt="Souvik Samanta" class="hero-photo" />
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-tag">// about</div>
+          <h2 class="section-title">Data scientist who thinks like a business partner</h2>
+          <p>I'm a <strong>Senior Data Scientist with 6+ years</strong> of experience building end-to-end ML systems across EdTech, travel, and real estate. Currently at <strong>Coursera</strong>, where I own lifecycle analytics and CRM campaign measurement across millions of learners.</p>
+          <p>My strength is <strong>thought partnership</strong> — I don't hand over reports. I sit with marketing and growth leaders, frame the right problems, and align on actions that move metrics that matter. Lead scoring that cuts costs. Churn models that enable retention at scale. Experiments that teams can actually act on.</p>
+          <p>Before data science, I was a structural engineer — which means I've always thought in systems, validated assumptions, and built things where errors have consequences. I also co-founded <strong>Quantbot Securities</strong>, an automated copy-trading platform, giving me a founder's accountability over every layer of a product.</p>
+          <p>MBA in <strong>Finance & Analytics</strong>, IMI New Delhi.</p>
+        </div>
+        <div class="about-stack">
+          <div class="stack-group">
+            <div class="stack-label">Machine Learning</div>
+            <div class="stack-tags">
+              <span class="tag">XGBoost</span>
+              <span class="tag">LightGBM</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">Random Forest</span>
+              <span class="tag">K-Means</span>
+              <span class="tag">ARIMA</span>
+              <span class="tag">Prophet</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <div class="stack-label">Languages & Data</div>
+            <div class="stack-tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">pandas</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Bayesian Stats</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <div class="stack-label">Data Engineering</div>
+            <div class="stack-tags">
+              <span class="tag">Databricks</span>
+              <span class="tag">BigQuery</span>
+              <span class="tag">Airflow</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">Google Cloud</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <div class="stack-label">BI & Backend</div>
+            <div class="stack-tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">Looker</span>
+              <span class="tag">Braze</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Django REST</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section id="projects">
+    <div class="container">
+      <div class="projects-header">
+        <div class="section-tag">// selected work</div>
+        <h2 class="section-title">Impact that speaks in numbers</h2>
+        <p class="section-sub">Projects where data moved business needles — not just dashboards for dashboards' sake.</p>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-company">Coursera</span>
+            <span class="project-type">ML · CRM Analytics</span>
+          </div>
+          <h3 class="project-title">Churn Prediction &amp; Lifecycle ML</h3>
+          <p class="project-desc">Built and deployed churn prediction models (XGBoost/LightGBM) on Databricks to identify at-risk learners and power retention interventions at scale. Developed automated ML feature pipelines for campaign audience generation across millions of users. Partnered with marketing leadership to translate model outputs into CRM strategy.</p>
+          <div class="project-metrics">
+            <span class="metric-pill">Millions of users served</span>
+            <span class="metric-pill">Bayesian A/B framework</span>
+          </div>
+          <div class="project-tech">
+            <span class="tag">XGBoost</span>
+            <span class="tag">LightGBM</span>
+            <span class="tag">Databricks</span>
+            <span class="tag">K-Means</span>
+            <span class="tag">Braze</span>
+            <span class="tag">Looker</span>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-company">Travelopia</span>
+            <span class="project-type">Predictive Modelling</span>
+          </div>
+          <h3 class="project-title">Lead Scoring &amp; Propensity Models</h3>
+          <p class="project-desc">Built propensity-to-purchase and lead scoring models that directly reduced marketing spend while improving the quality of leads passed to sales. Developed customer LTV forecasting and time-series demand models (ARIMA, Prophet) for revenue planning. Built automated data pipelines on Google Cloud with near-real-time feature store refreshes.</p>
+          <div class="project-metrics">
+            <span class="metric-pill">30% marketing cost reduction</span>
+            <span class="metric-pill">20% lead quality uplift</span>
+          </div>
+          <div class="project-tech">
+            <span class="tag">Logistic Regression</span>
+            <span class="tag">Random Forest</span>
+            <span class="tag">XGBoost</span>
+            <span class="tag">ARIMA</span>
+            <span class="tag">Prophet</span>
+            <span class="tag">Google Cloud</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Power BI</span>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-company">Quantbot Securities</span>
+            <span class="project-type">Fintech · ML Platform</span>
+          </div>
+          <h3 class="project-title">Automated Copy-Trading Platform</h3>
+          <p class="project-desc">Co-founded and built an end-to-end cloud-based copy-trading platform from scratch during COVID. Led all backend architecture and ML engineering — trade signal generation, price movement prediction, and portfolio risk models. Designed a high-availability distributed system using Django, FastAPI, Docker, and Kubernetes with async broker API integrations. Real customers, real revenue, 5 years of operation.</p>
+          <div class="project-metrics">
+            <span class="metric-pill">Real trading profits generated</span>
+            <span class="metric-pill">Auto-scaling cloud infra</span>
+          </div>
+          <div class="project-tech">
+            <span class="tag">FastAPI</span>
+            <span class="tag">Django</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Docker</span>
+            <span class="tag">ML Signal Models</span>
+            <span class="tag">Async APIs</span>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-company">NoBroker</span>
+            <span class="project-type">Growth Analytics</span>
+          </div>
+          <h3 class="project-title">Funnel Analytics &amp; Segmentation</h3>
+          <p class="project-desc">Identified high-converting customer cohorts that were being ignored by volume-only metrics. Built a segmentation and analytics layer that surfaced which cohorts actually converted — directly reshaping the growth team's targeting strategy and driving meaningful revenue improvement. Automated reporting pipelines in Python cut turnaround by 30%.</p>
+          <div class="project-metrics">
+            <span class="metric-pill">15% revenue improvement</span>
+            <span class="metric-pill">30% faster reporting</span>
+          </div>
+          <div class="project-tech">
+            <span class="tag">Python</span>
+            <span class="tag">Segmentation</span>
+            <span class="tag">Cohort Analysis</span>
+            <span class="tag">Google Data Studio</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services ── -->
+  <section id="services">
+    <div class="container">
+      <div class="services-layout">
+        <div class="services-intro">
+          <div class="section-tag">// how I can help</div>
+          <h2 class="section-title">What I bring to your team</h2>
+          <p class="section-sub">Available for consulting engagements, part-time contracts, and full-time roles where data is a strategic function.</p>
+          <br/>
+          <div class="avail-card">
+            <div class="avail-title">Availability</div>
+            <div class="avail-item"><span class="avail-dot"></span> Open to full-time roles</div>
+            <div class="avail-item"><span class="avail-dot"></span> 15–20 hrs/week consulting</div>
+            <div class="avail-item"><span class="avail-dot"></span> Remote · IST (UTC+5:30)</div>
+            <div class="avail-item"><span class="avail-dot"></span> Async-friendly for US/EU teams</div>
+            <div class="avail-item"><span class="avail-dot"></span> Retainers &amp; project-based</div>
+          </div>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🎯</div>
+            <div class="service-title">Customer Analytics</div>
+            <div class="service-desc">Churn prediction, lead scoring, propensity models, LTV forecasting, and segmentation — built for targeting precision and retention, not just model accuracy.</div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">📊</div>
+            <div class="service-title">CRM & Lifecycle Analytics</div>
+            <div class="service-desc">End-to-end measurement of campaigns across email, push, and in-app. Currently doing this at scale for a global EdTech platform with millions of users.</div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🧪</div>
+            <div class="service-title">Experimentation</div>
+            <div class="service-desc">A/B tests, holdout experiments, and lift studies designed to be statistically rigorous and business-relevant. Teams can actually act on the results.</div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">⚙️</div>
+            <div class="service-title">Data Engineering</div>
+            <div class="service-desc">Automated pipelines on Databricks, BigQuery, Google Cloud, and Docker. ML feature stores, ETL workflows, and real-time data infrastructure built to last.</div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">📈</div>
+            <div class="service-title">Dashboards & BI</div>
+            <div class="service-desc">Power BI, Looker, and Google Data Studio — built for executive decision-making, not operational visibility. Senior leaders should understand it in under 30 seconds.</div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🤝</div>
+            <div class="service-title">Data Strategy</div>
+            <div class="service-desc">Identify what to measure, build easy-to-read frameworks, and coach teams to make confident data-driven decisions. For non-technical leaders who need clarity fast.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="section-tag">// let's connect</div>
+        <h2 class="section-title">Have a problem worth solving?</h2>
+        <p class="section-sub">Whether you're looking for a senior data scientist to join your team, or a consultant to help you make sense of your data — I'm happy to talk.</p>
+        <div class="contact-links">
+          <a href="mailto:souviksamanta95@gmail.com" class="contact-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            souviksamanta95@gmail.com
+          </a>
+          <a href="tel:+917407364226" class="contact-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+            (+91) 7407 364 226
+          </a>
+          <a href="https://linkedin.com/in/souviksamanta95" target="_blank" rel="noopener" class="contact-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/souviksamanta95/" target="_blank" rel="noopener" class="contact-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Souvik Samanta · Built with purpose, deployed on <a href="https://pages.cloudflare.com" target="_blank">Cloudflare Pages</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
