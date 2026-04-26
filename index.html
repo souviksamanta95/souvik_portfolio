@@ -1453,11 +1453,11 @@
 
     // Active nav link on scroll
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const scrollNavLinks = document.querySelectorAll('.nav-links a');
     const scrollObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          navLinks.forEach(link => {
+          scrollNavLinks.forEach(link => {
             link.style.color = link.getAttribute('href') === '#' + entry.target.id ? 'var(--text)' : '';
           });
         }
