@@ -3,8 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Souvik Samanta — Senior Data Scientist</title>
-  <meta name="description" content="Senior Data Scientist & ML Engineer. I help marketing and growth teams drive business impact through data — churn prediction, lead scoring, A/B testing, and executive dashboards." />
+  <title>Souvik Samanta — Senior Data Scientist & Independent Analytics Consultant</title>
+  <meta name="description" content="Senior Data Scientist & independent analytics consultant with 6+ years of experience. Specialising in churn prediction, lead scoring, CRM analytics, A/B testing, and data strategy. Available for consulting and full-time roles. Based in Bangalore, India." />
+  <meta name="keywords" content="independent data science consultant, freelance data scientist India, CRM analytics consultant, machine learning consultant, churn prediction, lead scoring, A/B testing consultant, Databricks consultant, analytics consultant Bangalore, data strategy consultant" />
+  <meta name="author" content="Souvik Samanta" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://souvik.cc" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://souvik.cc" />
+  <meta property="og:title" content="Souvik Samanta — Senior Data Scientist & Analytics Consultant" />
+  <meta property="og:description" content="I help marketing and growth teams drive business impact through data — churn prediction, lead scoring, A/B testing, and executive dashboards. Available for consulting & full-time roles." />
+  <meta property="og:image" content="https://souvik.cc/Souvik_Samanta.jpg" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="800" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:site_name" content="Souvik Samanta" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Souvik Samanta — Senior Data Scientist & Analytics Consultant" />
+  <meta name="twitter:description" content="I help marketing and growth teams drive business impact through data. Available for consulting & full-time roles." />
+  <meta name="twitter:image" content="https://souvik.cc/Souvik_Samanta.jpg" />
+
+  <!-- Schema.org Person + ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Souvik Samanta",
+        "url": "https://souvik.cc",
+        "image": "https://souvik.cc/Souvik_Samanta.jpg",
+        "jobTitle": "Senior Data Scientist",
+        "description": "Senior Data Scientist and independent analytics consultant with 6+ years of experience in machine learning, CRM analytics, and data strategy.",
+        "email": "souviksamanta95@gmail.com",
+        "telephone": "+917407364226",
+        "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
+        "sameAs": [
+          "https://linkedin.com/in/souviksamanta95",
+          "https://github.com/souviksamanta95"
+        ],
+        "knowsAbout": ["Machine Learning", "Data Science", "CRM Analytics", "Churn Prediction", "Lead Scoring", "A/B Testing", "Databricks", "Python", "SQL", "Power BI", "Looker"]
+      },
+      {
+        "@type": "ProfessionalService",
+        "name": "Souvik Samanta — Analytics Consulting",
+        "url": "https://souvik.cc",
+        "description": "Independent data science and analytics consulting — churn prediction, lead scoring, CRM analytics, experimentation, and data engineering.",
+        "founder": { "@type": "Person", "name": "Souvik Samanta" },
+        "areaServed": "Worldwide",
+        "availableLanguage": "English",
+        "priceRange": "$$"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b0f1a'/><text x='50' y='72' font-family='Inter,sans-serif' font-size='62' font-weight='700' text-anchor='middle' fill='%234f8ef7'>S</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -172,7 +231,7 @@
 
     /* ── Impact Strip ── */
     .impact-strip {
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 1px; background: var(--border);
       border: 1px solid var(--border); border-radius: var(--radius);
       overflow: hidden;
@@ -223,10 +282,128 @@
     }
     .tag:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ── Timeline ── */
+    /* ── Experience Layout ── */
+    #experience { background: var(--bg); }
+    .experience-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; padding: 8px 0; }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 20px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--border) 6%, var(--border) 94%, transparent);
+    }
+    .tl-item {
+      display: flex; gap: 24px; margin-bottom: 40px;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .tl-item.visible { opacity: 1; transform: translateY(0); }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-content {
+      flex: 1; background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 28px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .tl-content::before {
+      content: ''; position: absolute;
+      left: -7px; top: 22px;
+      width: 12px; height: 12px;
+      border-top: 2px solid var(--border); border-right: 2px solid var(--border);
+      background: var(--bg2); transform: rotate(225deg);
+    }
+    .tl-content:hover {
+      border-color: rgba(79,142,247,0.35);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    }
+    .tl-spacer {
+      width: 42px; flex-shrink: 0;
+      display: flex; justify-content: center;
+      align-items: flex-start; padding-top: 20px;
+    }
+    .tl-dot {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--border);
+      flex-shrink: 0; position: relative; z-index: 1;
+      transition: box-shadow var(--transition), background var(--transition);
+    }
+    .tl-item:hover .tl-dot { background: var(--accent2); box-shadow: 0 0 0 4px rgba(79,142,247,0.3); }
+    .tl-current .tl-dot { background: var(--green); box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px rgba(52,211,153,0.3); }
+    .tl-period {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--accent); font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: 6px;
+    }
+    .tl-title { font-size: 17px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.3px; }
+    .tl-company { font-size: 12px; color: var(--muted); font-weight: 500; margin-bottom: 12px; }
+    .tl-company span {
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    }
+    .tl-bullets { list-style: none; padding: 0; }
+    .tl-bullets li {
+      font-size: 13px; color: var(--muted); padding: 3px 0 3px 16px;
+      position: relative; line-height: 1.6;
+    }
+    .tl-bullets li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--accent); font-size: 11px; top: 5px;
+    }
+    .tl-metrics { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+    /* ── Skill Cards (right panel) ── */
+    .skills-panel {
+      position: sticky; top: 88px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .skill-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 22px;
+      opacity: 0; transform: translateX(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease, border-color var(--transition);
+    }
+    .skill-card.visible { opacity: 1; transform: translateX(0); }
+    .skill-card:hover { border-color: rgba(79,142,247,0.3); }
+    .skill-card-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent); font-weight: 600; margin-bottom: 12px;
+    }
+    .skill-pill-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill-pill {
+      font-size: 11px; font-weight: 500;
+      background: var(--bg3); border: 1px solid var(--border);
+      color: var(--muted); padding: 4px 10px; border-radius: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      transition: all var(--transition);
+    }
+    .skill-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .skill-pill.hot { border-color: rgba(79,142,247,0.3); color: var(--accent2); background: rgba(79,142,247,0.06); }
+
+    @media (max-width: 960px) {
+      .experience-layout { grid-template-columns: 1fr; }
+      .skills-panel { position: static; flex-direction: row; flex-wrap: wrap; }
+      .skill-card { flex: 1 1 200px; }
+    }
+    @media (max-width: 768px) {
+      .skills-panel { flex-direction: column; }
+      .skill-card { flex: unset; }
+    }
+
     /* ── Projects ── */
-    #projects { background: var(--bg); }
+    #projects { background: var(--bg2); }
     .projects-header { margin-bottom: 56px; }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
     .project-card {
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 32px;
@@ -297,6 +474,43 @@
     .service-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
     .service-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
 
+    /* ── Testimonials ── */
+    #testimonials { background: var(--bg); }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+    .testimonial-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px;
+      position: relative; transition: border-color var(--transition), box-shadow var(--transition);
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+    .testimonial-card:hover { border-color: rgba(79,142,247,0.3); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+    .testimonial-quote {
+      font-size: 48px; line-height: 1; color: var(--accent);
+      opacity: 0.3; font-family: Georgia, serif;
+      margin-bottom: 12px;
+    }
+    .testimonial-text {
+      font-size: 14px; color: var(--muted); line-height: 1.8;
+      margin-bottom: 24px; font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .testimonial-initials {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .testimonial-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .testimonial-role { font-size: 12px; color: var(--muted); line-height: 1.4; }
+    .testimonial-source {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; color: var(--accent); font-family: 'JetBrains Mono', monospace;
+      margin-top: 4px;
+    }
+    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
     /* ── Contact ── */
     #contact {
       background: var(--bg);
@@ -347,8 +561,11 @@
       <div class="nav-logo">souvik<span>.</span>cc</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="Souvik_Samanta_CV_FT.pdf" download class="nav-cta" style="background:transparent;border:1px solid var(--border);color:var(--muted);">↓ CV</a></li>
         <li><a href="#contact" class="nav-cta">Work With Me</a></li>
       </ul>
     </div>
@@ -373,6 +590,10 @@
           <a href="#projects" class="btn-primary">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             See My Work
+          </a>
+          <a href="Souvik_Samanta_CV_FT.pdf" download class="btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
           </a>
           <a href="https://calendly.com/souviksamanta95/30min" target="_blank" rel="noopener" class="btn-secondary">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -463,6 +684,196 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── Experience Timeline ── -->
+  <section id="experience">
+    <div class="container">
+      <div style="margin-bottom:56px;">
+        <div class="section-tag">// experience</div>
+        <h2 class="section-title">The journey so far</h2>
+        <p class="section-sub">Six years across EdTech, travel, real estate, and fintech — building ML systems and data strategies that moved real business needles.</p>
+      </div>
+      <div class="experience-layout">
+      <div class="timeline">
+
+        <!-- Coursera -->
+        <div class="tl-item tl-current">
+          <div class="tl-content">
+            <div class="tl-period">Sept 2024 — Present</div>
+            <div class="tl-title">Data Scientist II — Lifecycle Analytics & ML</div>
+            <div class="tl-company"><span>Coursera</span> &nbsp;·&nbsp; EdTech · Remote</div>
+            <ul class="tl-bullets">
+              <li>Built and deployed churn prediction models (XGBoost/LightGBM) on Databricks, identifying at-risk learners across millions of users</li>
+              <li>Developed customer segmentation using K-Means and RFM analysis to personalise CRM campaigns across email, push, and in-app channels</li>
+              <li>Designed and executed A/B tests, holdout experiments, and lift studies using Bayesian and frequentist frameworks</li>
+              <li>Automated ML feature pipelines on Databricks for model scoring and campaign audience generation at scale</li>
+              <li>Thought partner to CRM and marketing leadership — translating model outputs into targeting and channel strategy</li>
+            </ul>
+            <div class="tl-metrics">
+              <span class="metric-pill">Millions of users</span>
+              <span class="metric-pill">Bayesian A/B framework</span>
+            </div>
+          </div>
+          <div class="tl-spacer"><div class="tl-dot"></div></div>
+          <div style="flex:1;"></div>
+        </div>
+
+        <!-- Quantbot -->
+        <div class="tl-item">
+          <div style="flex:1;"></div>
+          <div class="tl-spacer"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-period">Jan 2021 — Jan 2026</div>
+            <div class="tl-title">Co-Founder & ML Engineer</div>
+            <div class="tl-company"><span>Quantbot Securities Pvt. Ltd.</span> &nbsp;·&nbsp; Fintech · Remote</div>
+            <ul class="tl-bullets">
+              <li>Co-founded and built an automated copy-trading platform from scratch during COVID — real customers, real revenue, 5 years of operation</li>
+              <li>Built ML models for trade signal generation, price movement prediction, and portfolio risk analysis</li>
+              <li>Designed a high-availability distributed backend using FastAPI, Django, Docker, and Kubernetes with async broker API integrations</li>
+              <li>Led full backend architecture, cloud infrastructure, and all engineering decisions end-to-end as a solo technical founder</li>
+              <li>Managed end-to-end: client relationships, team of 4, compliance, invoicing, and product roadmap</li>
+            </ul>
+            <div class="tl-metrics">
+              <span class="metric-pill">Auto-scaling cloud infra</span>
+              <span class="metric-pill">Real trading profits</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Travelopia -->
+        <div class="tl-item">
+          <div class="tl-content">
+            <div class="tl-period">Sept 2022 — Aug 2024</div>
+            <div class="tl-title">Business Analyst — Customer Insights & ML Analytics</div>
+            <div class="tl-company"><span>Travelopia</span> &nbsp;·&nbsp; Travel · Remote</div>
+            <ul class="tl-bullets">
+              <li>Built propensity-to-purchase and lead scoring models (Logistic Regression, Random Forest, XGBoost) improving targeting precision significantly</li>
+              <li>Developed LTV forecasting and time-series demand models (ARIMA, Prophet) for revenue planning and inventory decisions</li>
+              <li>Built automated data pipelines using Docker and Google Cloud with near-real-time refreshes for ML feature stores and reporting</li>
+              <li>Designed Power BI dashboards integrating multi-source data for cross-brand visibility used by senior leadership weekly</li>
+            </ul>
+            <div class="tl-metrics">
+              <span class="metric-pill">30% marketing cost reduction</span>
+              <span class="metric-pill">20% lead quality uplift</span>
+            </div>
+          </div>
+          <div class="tl-spacer"><div class="tl-dot"></div></div>
+          <div style="flex:1;"></div>
+        </div>
+
+        <!-- NoBroker -->
+        <div class="tl-item">
+          <div style="flex:1;"></div>
+          <div class="tl-spacer"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-period">Nov 2021 — Aug 2022</div>
+            <div class="tl-title">Business Analyst</div>
+            <div class="tl-company"><span>NoBroker Technologies</span> &nbsp;·&nbsp; PropTech · Bangalore</div>
+            <ul class="tl-bullets">
+              <li>Identified high-converting customer cohorts using segmentation and funnel analytics, directly reshaping growth team targeting strategy</li>
+              <li>Delivered analytical insights on growth and sales performance driving 15% revenue improvement</li>
+              <li>Automated reporting pipelines using Python (pandas, NumPy), cutting report turnaround by 30%</li>
+              <li>Designed interactive dashboards for sales and marketing visibility in Google Data Studio</li>
+            </ul>
+            <div class="tl-metrics">
+              <span class="metric-pill">15% revenue improvement</span>
+              <span class="metric-pill">30% faster reporting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Mahindra -->
+        <div class="tl-item">
+          <div class="tl-content">
+            <div class="tl-period">Apr 2021 — Oct 2021</div>
+            <div class="tl-title">Senior Business Associate — Analytics & Strategy</div>
+            <div class="tl-company"><span>Tech Mahindra</span> &nbsp;·&nbsp; IT Services · Kolkata</div>
+            <ul class="tl-bullets">
+              <li>Supported client-facing data analytics projects and campaign optimisation initiatives in the Big Data and Analytics domain</li>
+              <li>Built tracking systems for process monitoring and performance reporting</li>
+              <li>First enterprise analytics role — foundation for understanding how data decisions are made at scale</li>
+            </ul>
+          </div>
+          <div class="tl-spacer"><div class="tl-dot"></div></div>
+          <div style="flex:1;"></div>
+        </div>
+
+        <!-- MN Dastur -->
+        <div class="tl-item">
+          <div style="flex:1;"></div>
+          <div class="tl-spacer"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-period">Aug 2017 — Jul 2018</div>
+            <div class="tl-title">Structural Engineer</div>
+            <div class="tl-company"><span>M. N. Dastur & Co.</span> &nbsp;·&nbsp; Engineering · Kolkata</div>
+            <ul class="tl-bullets">
+              <li>Structural design and load analysis for large-scale steel plant projects using STAAD Pro and CAD</li>
+              <li>Built precision in calculations and rigorous validation habits — the same discipline that defines good data science</li>
+              <li>The foundation for thinking in systems, validating assumptions, and communicating technical findings to non-technical stakeholders</li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- end timeline -->
+
+      <!-- Skill Cards Panel -->
+      <div class="skills-panel">
+        <div class="skill-card">
+          <div class="skill-card-label">⚡ Core ML</div>
+          <div class="skill-pill-wrap">
+            <span class="skill-pill hot">XGBoost</span>
+            <span class="skill-pill hot">LightGBM</span>
+            <span class="skill-pill">Random Forest</span>
+            <span class="skill-pill">Logistic Reg.</span>
+            <span class="skill-pill">K-Means</span>
+            <span class="skill-pill">Scikit-learn</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">📈 Forecasting & Stats</div>
+          <div class="skill-pill-wrap">
+            <span class="skill-pill hot">A/B Testing</span>
+            <span class="skill-pill hot">Bayesian Stats</span>
+            <span class="skill-pill">ARIMA</span>
+            <span class="skill-pill">Prophet</span>
+            <span class="skill-pill">Hypothesis Testing</span>
+            <span class="skill-pill">LTV Modelling</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">🛢 Data Engineering</div>
+          <div class="skill-pill-wrap">
+            <span class="skill-pill hot">Databricks</span>
+            <span class="skill-pill hot">BigQuery</span>
+            <span class="skill-pill">Airflow</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">Kubernetes</span>
+            <span class="skill-pill">Google Cloud</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">📊 BI & Languages</div>
+          <div class="skill-pill-wrap">
+            <span class="skill-pill hot">Python</span>
+            <span class="skill-pill hot">SQL</span>
+            <span class="skill-pill">Power BI</span>
+            <span class="skill-pill">Looker</span>
+            <span class="skill-pill">Braze</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">🔧 Backend & APIs</div>
+          <div class="skill-pill-wrap">
+            <span class="skill-pill">FastAPI</span>
+            <span class="skill-pill">Django REST</span>
+            <span class="skill-pill">Async Processing</span>
+            <span class="skill-pill">CI/CD</span>
+          </div>
+        </div>
+      </div><!-- end skills-panel -->
+
+      </div><!-- end experience-layout -->
     </div>
   </section>
 
@@ -627,6 +1038,50 @@
     </div>
   </section>
 
+  <!-- ── Testimonials ── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-tag">// recommendations</div>
+      <h2 class="section-title">What colleagues say</h2>
+      <p class="section-sub">Verified LinkedIn recommendations from people who've worked with me directly.</p>
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">I had the pleasure of working with Souvik at Travelopia for over two years. He consistently showcased exceptional skills in ML modeling using Python, delivering impressive results on complex projects. Beyond his technical expertise, Souvik is a remarkable team player, fostering collaboration and encouraging open dialogue among team members. His positive attitude and strong work ethic greatly enhanced our team dynamic. I am confident that Souvik will be a valuable asset to any organization he joins, bringing both expertise and a collaborative spirit to the table.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-initials">TP</div>
+            <div>
+              <div class="testimonial-name">Tejash Popate</div>
+              <div class="testimonial-role">Business Analyst · Travelopia<br/>Worked on the same team</div>
+              <a href="https://www.linkedin.com/in/tejashpopate" target="_blank" rel="noopener" class="testimonial-source">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                View on LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">I had the pleasure of working with Souvik for more than 1.5 years at Travelopia, and I can confidently attest to his exceptional skills and contributions. Souvik was an invaluable asset to our team, delivering high-quality work on various analytics projects, including building dashboards in Power BI, analysis using Python, and developing machine learning and factor-based models. His dedication, strong work ethic, and technical expertise enabled him to tackle complex projects with ease. What impressed me most about Souvik was his willingness to support and collaborate with other team members, fostering a spirit of teamwork and knowledge sharing. I highly recommend Souvik for any future roles.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-initials">JK</div>
+            <div>
+              <div class="testimonial-name">Jyoti Kumar</div>
+              <div class="testimonial-role">Analytics Leader · Data Science & Predictive Modelling<br/>Managed Souvik directly</div>
+              <a href="https://www.linkedin.com/in/jyoti05iitd" target="_blank" rel="noopener" class="testimonial-source">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                View on LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ── Contact ── -->
   <section id="contact">
     <div class="container">
@@ -663,9 +1118,53 @@
   <!-- ── Footer ── -->
   <footer>
     <div class="container">
-      <p>© 2025 Souvik Samanta · Built with purpose, deployed on <a href="https://pages.cloudflare.com" target="_blank">Cloudflare Pages</a></p>
+      <p>© 2026 Souvik Samanta</p>
     </div>
   </footer>
 
+  <script>
+    // Scroll-triggered timeline animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // stagger delay based on position
+          const delay = (entry.target.dataset.delay || 0);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.tl-item').forEach((el, i) => {
+      el.dataset.delay = i * 100;
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.skill-card').forEach((el, i) => {
+      el.dataset.delay = i * 80;
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.testimonial-card').forEach((el, i) => {
+      el.dataset.delay = i * 150;
+      observer.observe(el);
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.color = link.getAttribute('href') === '#' + entry.target.id ? 'var(--text)' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => scrollObserver.observe(s));
+  </script>
 </body>
 </html>
