@@ -1,5 +1,14 @@
 [
   {
+    "id": 4,
+    "title": "I built a trading bot that beat the market — and why I'm grateful it failed.",
+    "date": "2026-04-28",
+    "theme": "Entrepreneurship",
+    "summary": "Quantbot was a copy-trading platform I built from scratch — ML signals, live execution, the works. The real lesson wasn't in the gains. It was in understanding what data can and can't tell you about human risk.",
+    "url": "https://www.linkedin.com/posts/souviksamanta95_entrepreneurship-datascience-gratitude-activity-7454764047188713472-h8Wn",
+    "tags": ["Entrepreneurship", "DataScience", "Gratitude"]
+  },
+  {
     "id": 3,
     "title": "I quit Tech Mahindra without a backup plan. Here's what happened next.",
     "date": "2026-04-20",
