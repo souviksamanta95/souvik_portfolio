@@ -565,6 +565,7 @@
     .project-card:hover::before { opacity: 1; }
     .project-meta {
       display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px 12px;
       margin-bottom: 20px;
     }
     .project-company {
@@ -575,6 +576,7 @@
       font-size: 11px; background: var(--bg3); border: 1px solid var(--border);
       color: var(--muted); padding: 3px 10px; border-radius: 4px;
       font-family: 'JetBrains Mono', monospace;
+      white-space: normal; max-width: 100%;
     }
     .project-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.3px; }
     .project-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
@@ -1223,12 +1225,12 @@
         <div class="project-card">
           <div class="project-meta">
             <span class="project-company">mySerenity.in</span>
-            <span class="project-type">Healthtech · Full-Stack + Agentic AI · Personal Project</span>
+            <span class="project-type">Healthtech · Personal Project</span>
           </div>
           <h3 class="project-title">Mental Health Platform with ARIA (Founder)</h3>
-          <p class="project-desc"><strong>Impact:</strong> An independent personal project, built and run in parallel with full-time employment. Same company/entity as Quantbot below — pivoted to a new identity after Quantbot's copy-trading platform was shut down due to regulatory constraints. Built from scratch starting January 2026 — a live platform (myserenity.in) connecting individuals with mental health professionals (psychiatrists and psychologists), with a community feature, secure consent-based video consultations, billing, and prescription management. At its core is <strong>ARIA</strong>, a guardrailed, specialized mental health chatbot capable of long conversations with patients that <strong>summarizes each conversation</strong> to help clinicians analyze patient state efficiently between sessions. Built the full stack solo: Django backend, Next.js frontend, PostgreSQL + Redis, real-time video via Janus (WebRTC), and private S3 buckets storing consent-based call recordings.</p>
+          <p class="project-desc"><strong>Impact:</strong> An independent personal project, built and run in parallel with full-time employment. Same company/entity as Quantbot below — pivoted to a new identity after Quantbot's copy-trading platform was shut down due to regulatory constraints. Development started January 2026; live at myserenity.in since June 2026 — a platform connecting individuals with mental health professionals (psychiatrists and psychologists), with a community feature, secure consent-based video consultations, billing, and prescription management. At its core is <strong>ARIA</strong>, a guardrailed, specialized mental health chatbot capable of long conversations with patients that <strong>summarizes each conversation</strong> to help clinicians analyze patient state efficiently between sessions. Built the full stack solo: Django backend, Next.js frontend, PostgreSQL + Redis, real-time video via Janus (WebRTC), and private S3 buckets storing consent-based call recordings.</p>
           <div class="project-metrics">
-            <span class="metric-pill">Live since Jan 2026</span>
+            <span class="metric-pill">Live since June 2026</span>
             <span class="metric-pill">Guardrailed clinical AI</span>
             <span class="metric-pill">Solo full-stack build</span>
           </div>
@@ -1248,7 +1250,7 @@
         <div class="project-card">
           <div class="project-meta">
             <span class="project-company">Quantbot Securities</span>
-            <span class="project-type">Fintech · Full-Stack AI Systems · Personal Project</span>
+            <span class="project-type">Fintech · Personal Project</span>
           </div>
           <h3 class="project-title">Automated Copy-Trading Platform (Founder, shut down)</h3>
           <p class="project-desc"><strong>Impact:</strong> An independent personal project, built and run in parallel with full-time employment. Co-founded &amp; built end-to-end cloud platform from scratch during COVID, serving real customers with real trading profits. Led <strong>all backend architecture + ML engineering</strong> — trade signal generation (LSTM, Transformer concepts), price movement prediction, portfolio risk models. Designed distributed system: FastAPI async request handling, Django ORM, PostgreSQL transactions, Redis caching, WebSocket real-time streaming. Containerized with Docker, orchestrated via Kubernetes with auto-scaling. Real-time broker API integrations. <strong>Shut down in early 2026 due to regulatory constraints on retail algorithmic copy-trading</strong> — the same company/entity then pivoted into mySerenity.in above.</p>

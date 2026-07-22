@@ -710,7 +710,7 @@ A professional who combines:
 
 ## Flagship Project: mySerenity.in — Mental Health Platform
 
-**What:** A platform connecting individuals with mental health professionals (psychiatrists and psychologists), built from scratch starting January 2026, live at myserenity.in. Built under the same company/entity as Quantbot Securities, after Quantbot's copy-trading platform was shut down due to regulatory constraints — a founder pivot into a new domain and identity, not an unrelated side project.
+**What:** A platform connecting individuals with mental health professionals (psychiatrists and psychologists). Development started January 2026; live at myserenity.in since June 2026 (took time to build properly). Built under the same company/entity as Quantbot Securities, after Quantbot's copy-trading platform was shut down due to regulatory constraints — a founder pivot into a new domain and identity, not an unrelated side project.
 
 **Core features:**
 - Community feature for individuals seeking mental health support
