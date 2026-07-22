@@ -121,6 +121,7 @@
       --accent:    #4f8ef7;
       --accent2:   #38bdf8;
       --green:     #34d399;
+      --amber:     #f5a524;
       --gold:      #fbbf24;
       --radius:    12px;
       --radius-sm: 8px;
@@ -484,6 +485,15 @@
     }
     .tl-item:hover .tl-dot { background: var(--accent2); box-shadow: 0 0 0 4px rgba(79,142,247,0.3); }
     .tl-current .tl-dot { background: var(--green); box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px rgba(52,211,153,0.3); }
+    .tl-side .tl-content { border-style: dashed; border-color: rgba(245,165,36,0.35); background: rgba(245,165,36,0.03); }
+    .tl-side .tl-dot { background: var(--amber); border: 3px dashed var(--bg); box-shadow: 0 0 0 3px rgba(245,165,36,0.35); }
+    .tl-side-tag {
+      display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--amber); background: rgba(245,165,36,0.1);
+      border: 1px solid rgba(245,165,36,0.3); border-radius: 4px;
+      padding: 2px 8px; margin-left: 10px; vertical-align: middle;
+    }
     .tl-period {
       font-family: 'JetBrains Mono', monospace; font-size: 11px;
       color: var(--accent); font-weight: 500; text-transform: uppercase;
@@ -810,6 +820,12 @@
       .impact-strip { grid-template-columns: 1fr 1fr; }
       .hero-ctas { flex-direction: column; }
       .btn-primary, .btn-secondary { justify-content: center; }
+      .project-card, .testimonial-card { padding: 20px; }
+      .note-card, .service-card { padding: 18px; }
+      .tl-content { padding: 18px 18px 18px 24px; }
+      .tl-item { gap: 12px; }
+      .tl-spacer { width: 24px; }
+      .tl-content::before { display: none; }
     }
   </style>
 </head>
@@ -1004,14 +1020,15 @@
           <div style="flex:1;"></div>
         </div>
 
-        <!-- Quantbot -->
-        <div class="tl-item">
+        <!-- Quantbot -- parallel personal project, not a sequential full-time role -->
+        <div class="tl-item tl-side">
           <div style="flex:1;"></div>
           <div class="tl-spacer"><div class="tl-dot"></div></div>
           <div class="tl-content">
-            <div class="tl-period">Jan 2021 — Jan 2026</div>
+            <div class="tl-period">Jan 2021 — Jan 2026 <span class="tl-side-tag">Parallel · Personal Project</span></div>
             <div class="tl-title">Co-Founder & ML Engineer</div>
             <div class="tl-company"><span>Quantbot Securities Pvt. Ltd.</span> &nbsp;·&nbsp; Fintech · Remote</div>
+            <p style="font-size:13px; color:var(--muted); margin:0 0 12px;">Run independently, evenings/weekends, alongside full-time roles below (not a sequential job) — pivoted into <a href="#projects" style="color:var(--amber);">mySerenity.in</a> after this platform was shut down for regulatory reasons.</p>
             <ul class="tl-bullets">
               <li>Co-founded and built an automated copy-trading platform from scratch during COVID — real customers, real revenue, 5 years of operation</li>
               <li>Built ML models for trade signal generation, price movement prediction, and portfolio risk analysis</li>
