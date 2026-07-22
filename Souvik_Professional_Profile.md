@@ -97,9 +97,16 @@
 - Translated model outputs into business recommendations
 - Quantified trade-offs: precision vs. recall in targeting; intervention cost vs. expected uplift
 
+**Agentic AI for Stakeholder Self-Service Analytics** *(metrics below are placeholders — replace with real figures before using)*
+- Designed and deployed an agentic AI workflow integrating Claude with Databricks via the Model Context Protocol (MCP), enabling direct, governed tool-calling access to lifecycle/CRM data warehouses
+- Authored a custom domain-knowledge skill encoding table hierarchy, correct SQL query patterns, anti-patterns, and a structured root-cause-analysis (RCA) methodology — a working example of context engineering, not fine-tuning or prompt tweaking
+- Result: CRM/Marketing stakeholders can self-serve root-cause analysis on campaign and lifecycle metrics without analyst involvement, cutting typical RCA turnaround from [X hours/days of analyst time] to [Y minutes]
+- Systems + AI engineering angle: production example of tool-layer integration (MCP), context engineering (skill design), and applied agentic AI judgment — directly evidences the "Applied AI Systems Engineer" positioning with a live, adopted system rather than a demo project
+
 #### Tech Stack
 **Analytics:** Databricks SQL, Braze (CRM), Amplitude  
 **ML/Python:** XGBoost, LightGBM, Scikit-learn, Pandas  
+**Agentic AI:** Claude, Model Context Protocol (MCP), custom skill authoring  
 **Infrastructure:** GitHub, dbt (data transformations), Jira, Confluence
 
 ---

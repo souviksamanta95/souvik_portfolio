@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Agentic AI — Systems Intuition & Failure Modes | Souvik Samanta</title>
+<style>
+  :root {
+    --bg: #0b0f1a; --surface: #111827; --surface2: #1a2235; --border: #1f2d45;
+    --text: #e2e8f0; --text2: #a8b0c0; --text3: #8892a4;
+    --accent: #4f8ef7; --accent-dim: rgba(79,142,247,0.12);
+    --danger: #e2504a; --danger-dim: #2e1a1a;
+    --success: #34d399; --success-dim: rgba(52,211,153,0.1);
+    --warn: #fbbf24; --warn-dim: #2c2312;
+    --purple: #9d7fea; --purple-dim: #221c38;
+  }
+  * { box-sizing: border-box; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.65; padding: 0 0 4rem;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+  header { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); }
+  header .tag { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+  h1 { font-size: 30px; margin: 0.5rem 0 0.75rem; font-weight: 700; letter-spacing: -0.5px; }
+  header p { color: var(--text2); font-size: 15px; max-width: 640px; }
+  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
+  nav.toc a {
+    font-size: 13px; color: var(--text2); text-decoration: none; padding: 6px 12px;
+    border: 1px solid var(--border); border-radius: 20px; transition: all .15s;
+  }
+  nav.toc a:hover { color: var(--text); border-color: var(--accent); }
+  section { padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  h2 { font-size: 22px; font-weight: 700; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 10px; letter-spacing: -0.3px; }
+  h2 .num { color: var(--accent); font-size: 13px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+  .lede { color: var(--text2); font-size: 15px; margin-bottom: 1.5rem; max-width: 640px; }
+  h3 { font-size: 16px; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+  p { font-size: 14.5px; color: var(--text2); }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: var(--surface2); padding: 1px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); }
+  pre { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; font-size: 12.5px; }
+  pre code { background: none; padding: 0; color: #d4d8e2; }
+
+  .arch-diagram { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+  .arch-row { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .arch-box {
+    flex: 1; min-width: 130px; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px; cursor: pointer; transition: all .15s;
+  }
+  .arch-box:hover { border-color: var(--accent); }
+  .arch-box.active { border-color: var(--accent); background: var(--accent-dim); }
+  .arch-box .title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .arch-box .sub { font-size: 11.5px; color: var(--text3); margin-top: 3px; }
+  .arch-detail {
+    margin-top: 1rem; padding: 1rem; background: var(--accent-dim); border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0; font-size: 13.5px; color: var(--text2); display: none;
+  }
+  .arch-detail.show { display: block; }
+  .arch-detail strong { color: var(--text); }
+
+  .failure-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 1.5rem 0; }
+  .failure-card {
+    background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--danger);
+    border-radius: 0 10px 10px 0; padding: 1rem 1.25rem;
+  }
+  .failure-card .fname { font-size: 14.5px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .failure-card .fname .badge { font-size: 10.5px; background: var(--danger-dim); color: var(--danger); padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+  .failure-card .why { font-size: 13.5px; color: var(--text2); margin-top: 6px; }
+  .failure-card .fix { font-size: 13px; color: var(--success); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
+  .failure-card .fix::before { content: "Systems fix: "; color: var(--text3); font-weight: 600; }
+
+  .decision-tree { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+  .dt-q { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .dt-options { display: flex; gap: 10px; margin-bottom: 1rem; flex-wrap: wrap; }
+  .dt-opt {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 14px; font-size: 13px; cursor: pointer; transition: all .15s;
+  }
+  .dt-opt:hover { border-color: var(--accent); }
+  .dt-opt.selected { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+  .dt-result { background: var(--success-dim); border-left: 3px solid var(--success); padding: 1rem; border-radius: 0 8px 8px 0; font-size: 13.5px; color: var(--text2); margin-top: 1rem; display: none; }
+  .dt-result.show { display: block; }
+  .dt-result strong { color: var(--success); }
+
+  .qa-list { margin-top: 1.5rem; }
+  .qa-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+  .qa-q {
+    padding: 14px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px; font-weight: 500; color: var(--text);
+  }
+  .qa-q .level { font-size: 10.5px; padding: 2px 8px; border-radius: 10px; font-weight: 600; margin-right: 10px; }
+  .level.staff { background: var(--purple-dim); color: var(--purple); }
+  .level.senior { background: var(--warn-dim); color: var(--warn); }
+  .qa-q .chev { color: var(--text3); transition: transform .2s; flex-shrink: 0; }
+  .qa-item.open .chev { transform: rotate(180deg); }
+  .qa-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+  .qa-item.open .qa-a { max-height: 600px; }
+  .qa-a-inner { padding: 0 18px 16px; font-size: 13.5px; color: var(--text2); border-top: 1px solid var(--border); padding-top: 12px; }
+  .qa-a-inner ul { margin: 8px 0 0 1.2rem; padding: 0; }
+  .qa-a-inner li { margin-bottom: 6px; }
+
+  .gap-list { background: var(--warn-dim); border: 1px solid #4a3a1a; border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; }
+  .gap-list h3 { color: var(--warn); margin-top: 0; }
+  .gap-item { margin-bottom: 14px; font-size: 13.5px; }
+  .gap-item .gname { font-weight: 600; color: var(--text); }
+  .gap-item .gwhy { color: var(--text2); margin-top: 3px; }
+
+  .callout { background: var(--purple-dim); border-left: 3px solid var(--purple); padding: 1rem 1.25rem; border-radius: 0 10px 10px 0; margin: 1.5rem 0; font-size: 13.5px; color: var(--text2); }
+  .callout strong { color: var(--purple); }
+
+  .compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 13px; }
+  .compare-table th { text-align: left; padding: 10px 12px; background: var(--surface2); color: var(--text3); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .compare-table td { padding: 10px 12px; border-top: 1px solid var(--border); color: var(--text2); }
+  .compare-table tr:hover td { background: var(--surface); }
+
+  .analogy { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+  .analogy .row { display: flex; gap: 12px; align-items: baseline; padding: 6px 0; border-top: 1px dashed var(--border); }
+  .analogy .row:first-child { border-top: none; }
+  .analogy .k { min-width: 150px; font-size: 13px; font-weight: 600; color: var(--accent); }
+  .analogy .v { font-size: 13.5px; color: var(--text2); }
+
+  .loop-demo { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+  .loop-steps { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
+  .loop-step-btn {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 20px;
+    padding: 6px 14px; font-size: 12.5px; cursor: pointer; color: var(--text2); transition: all .15s;
+  }
+  .loop-step-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+  .loop-panel { background: var(--surface2); border-radius: 8px; padding: 1rem 1.25rem; font-size: 13.5px; color: var(--text2); }
+  .loop-panel .tag2 { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+
+  .usecase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 1.5rem 0; }
+  .usecase-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.15rem; }
+  .usecase-card .uname { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .usecase-card .uwhy { font-size: 13px; color: var(--text2); }
+
+  .glossary { display: grid; grid-template-columns: 1fr; gap: 0; margin: 1.5rem 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .gterm { display: flex; gap: 16px; padding: 12px 18px; border-top: 1px solid var(--border); background: var(--surface); }
+  .gterm:first-child { border-top: none; }
+  .gterm .term { min-width: 160px; font-size: 13.5px; font-weight: 600; color: var(--text); flex-shrink: 0; }
+  .gterm .def { font-size: 13px; color: var(--text2); }
+
+  .not-agent { background: var(--danger-dim); border: 1px solid #4a2222; border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+  .not-agent h3 { color: var(--danger); margin-top: 0; }
+
+  footer { padding: 2rem 0; text-align: center; color: var(--text3); font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="tag">Interview intuition series — module 1 of 5</div>
+  <h1>Agentic AI: architecture, failure modes, and the judgment gap</h1>
+  <p>Not a LangChain tutorial. This is about knowing why agent systems break, when not to build one, and how a systems engineer's instincts (idempotency, retries, observability) map directly onto debugging agents that misbehave.</p>
+  <nav class="toc">
+    <a href="#basics">Fundamentals</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#when">When to use what</a>
+    <a href="#failures">Failure modes</a>
+    <a href="#eval">Evaluation</a>
+    <a href="#qa">Interview Q&A</a>
+    <a href="#gaps">What's missing from most people's mental model</a>
+  </nav>
+</header>
+
+<section id="basics">
+  <h2><span class="num">01</span> What agentic AI actually is</h2>
+  <p class="lede">Start here since this is new territory. Everything later in this module assumes these fundamentals.</p>
+
+  <h3>The one-sentence definition</h3>
+  <p>A regular LLM call is a single request-response: you send a prompt, it sends back text, done. An <strong>agent</strong> is an LLM wired into a loop where it can decide to take actions (call a tool, search, run code, ask a follow-up), look at the result, and decide what to do next — repeating until it thinks the task is done. The model isn't just generating text anymore, it's making decisions about what to do.</p>
+
+  <div class="analogy">
+    <div class="row"><div class="k">Plain LLM call</div><div class="v">Like asking a very well-read colleague a question over email. One message in, one message back. They can't go check anything.</div></div>
+    <div class="row"><div class="k">Agent</div><div class="v">Like giving that colleague a laptop, database access, and telling them "figure out why the metric dropped and report back." They'll look things up, form a hypothesis, check it, revise, and only respond once they've actually done the work.</div></div>
+  </div>
+
+  <h3>The core loop (this is the whole idea — everything else is detail)</h3>
+  <p class="lede">Click through the steps. This think → act → observe cycle, repeated, is what "agentic" means. It's called the <strong>ReAct pattern</strong> (Reason + Act) in the literature.</p>
+
+  <div class="loop-demo">
+    <div class="loop-steps">
+      <div class="loop-step-btn active" data-loop="thought">1. Thought</div>
+      <div class="loop-step-btn" data-loop="action">2. Action</div>
+      <div class="loop-step-btn" data-loop="observation">3. Observation</div>
+      <div class="loop-step-btn" data-loop="repeat">4. Repeat or answer</div>
+    </div>
+    <div class="loop-panel" id="loop-panel">
+      <span class="tag2">Thought</span><br>
+      The model reasons in text about what it knows and what it needs next. Example, for "why did churn spike this week": <em>"I should first check if this is one segment or all users."</em> This step is just the model thinking out loud — no side effects yet.
+    </div>
+  </div>
+
+  <h3>Is this new? What's actually different from a normal script</h3>
+  <p>The loop itself (do something, check result, decide next step) is exactly what a <code>while</code> loop or a state machine does in regular software. The genuinely new part is that <strong>the decision of what to do next is made by the model, in natural language, at runtime</strong> — not hard-coded by a developer in advance. That's the entire delta. It's powerful because it handles tasks whose steps you couldn't fully enumerate ahead of time; it's risky for exactly the same reason — you've handed runtime control flow to something nondeterministic.</p>
+
+  <div class="not-agent">
+    <h3>What agentic AI is not</h3>
+    <p>A chatbot that answers questions is not an agent — no actions, no loop. A RAG pipeline (retrieve docs, stuff into prompt, generate) is not an agent either by the strict definition — it's a fixed two-step pipeline with no decision-making about whether to retrieve again or do something else. It becomes agentic the moment the model can decide, on its own, to search again, try a different tool, or stop. Keeping this distinction sharp matters in interviews — people who use "agent" for any LLM-touching product tend to get caught out on a follow-up question.</p>
+  </div>
+
+  <h3>Where you'll actually see this used</h3>
+  <div class="usecase-grid">
+    <div class="usecase-card"><div class="uname">Coding agents</div><div class="uwhy">Reads a codebase, writes code, runs tests, reads the failure, fixes it, reruns — a real loop where each step depends on the last.</div></div>
+    <div class="usecase-card"><div class="uname">Customer support triage</div><div class="uwhy">Looks up the customer's account, order history, and past tickets across systems before deciding how to respond or who to escalate to.</div></div>
+    <div class="usecase-card"><div class="uname">Data / metrics investigation</div><div class="uwhy">"Why did this KPI move" — queries different tables, forms a hypothesis, checks it, backtracks if wrong. Directly relevant to your marketing DS world.</div></div>
+    <div class="usecase-card"><div class="uname">Ops / SRE agents</div><div class="uwhy">Reads logs and metrics dashboards, correlates an incident to a recent deploy, proposes or takes a remediation action.</div></div>
+    <div class="usecase-card"><div class="uname">Research / deep-research assistants</div><div class="uwhy">Searches the web across many rounds, reads sources, decides what's still unknown, searches again, then synthesizes.</div></div>
+    <div class="usecase-card"><div class="uname">Personal task assistants</div><div class="uwhy">Books things, drafts and sends emails, checks calendars — multi-step tasks across tools with real-world side effects.</div></div>
+  </div>
+
+  <h3>Vocabulary you need before the rest of this module makes sense</h3>
+  <div class="glossary">
+    <div class="gterm"><div class="term">LLM</div><div class="def">The underlying model (GPT, Claude, etc.) that does the actual language reasoning at every step of the loop.</div></div>
+    <div class="gterm"><div class="term">Context window</div><div class="def">Everything the model can "see" for one call — system prompt, conversation history, tool results so far. It's finite; this limit is why memory management matters.</div></div>
+    <div class="gterm"><div class="term">System prompt</div><div class="def">The standing instructions that shape the agent's behavior and persona, set once, present on every call.</div></div>
+    <div class="gterm"><div class="term">Tool / function calling</div><div class="def">A model's ability to output a structured request ("call `search(query)`") instead of plain text, which your code then actually executes and feeds the result back in.</div></div>
+    <div class="gterm"><div class="term">Orchestrator</div><div class="def">The code (or another LLM call) that decides which agent or tool runs next — the traffic controller of the loop.</div></div>
+    <div class="gterm"><div class="term">Memory</div><div class="def">What persists across steps or sessions — short-term (this conversation) vs. long-term (facts saved for future runs, usually in a database or vector store).</div></div>
+    <div class="gterm"><div class="term">RAG (retrieval-augmented generation)</div><div class="def">Fetching relevant documents and inserting them into the prompt before generating — often a component used inside an agent, not the same thing as an agent.</div></div>
+    <div class="gterm"><div class="term">Embeddings / vector database</div><div class="def">A way to turn text into numeric vectors so "find documents similar in meaning" becomes a fast nearest-neighbor search — the retrieval mechanism behind most RAG and long-term memory.</div></div>
+    <div class="gterm"><div class="term">Multi-agent system</div><div class="def">Several agents, each with a narrower role, coordinated by an orchestrator — covered in depth in the next section.</div></div>
+  </div>
+
+  <h3>Connecting the dots: memory vs. context window vs. vector DB</h3>
+  <p class="lede">The fastest way in is a computer-architecture analogy, since it maps directly onto systems intuition you already have.</p>
+
+  <div class="analogy">
+    <div class="row"><div class="k">Context window</div><div class="v">RAM. Everything the model sees for one call — system prompt, conversation so far, tool results. Finite, fast, must fit or it doesn't exist to the model right now.</div></div>
+    <div class="row"><div class="k">Memory (concept)</div><div class="v">Not a mechanism — the general idea of "information that needs to survive beyond what fits in the context window." Short-term = accumulated conversation (really just context window contents that haven't fallen off yet). Long-term = facts that must persist across sessions or exceed what context could ever hold.</div></div>
+    <div class="row"><div class="k">Vector DB</div><div class="v">Disk. One specific way to implement long-term memory (and RAG) — external, larger, slower, requires an explicit "load" step (similarity search) before anything reaches the model. Never read by the model directly; it feeds the context window on demand, one relevant slice at a time.</div></div>
+  </div>
+
+  <p><strong>One trace, start to finish:</strong> a session starts with just the system prompt and task in the context window. The agent loops — thought, action, observation — and each step gets appended, so the context window keeps growing turn by turn (this growth is what "short-term memory" actually is). Eventually one of two pressures hits: the context window nears its token limit, or the task needs a fact that lives outside this session entirely. That's when you reach for long-term memory — summarize and drop older raw turns to control size, and/or query a vector DB to pull back only the handful of relevant facts, spliced into the context window just for this turn. The vector DB holds everything; the context window only ever holds the small slice that's relevant right now. The memory-bloat failure mode from section 04 is exactly what happens when someone conflates these three and just keeps appending everything to the context window instead of offloading to a vector DB or summarizing.</p>
+
+  <h3>Worked example: answering a question from a book too large for the context window</h3>
+  <p class="lede">This is the canonical RAG pattern, and it's the same vector DB mechanism as long-term memory — just applied to a static document instead of an agent's own history.</p>
+
+  <div class="analogy">
+    <div class="row"><div class="k">1. Chunk</div><div class="v">Split the PDF into overlapping passages (a paragraph or a page or two each) — small enough that a handful of them comfortably fit in a context window together.</div></div>
+    <div class="row"><div class="k">2. Embed</div><div class="v">Run every chunk through an embedding model, turning each into a vector that represents its meaning. This happens once, up front, not per question.</div></div>
+    <div class="row"><div class="k">3. Store</div><div class="v">Save each chunk's vector plus its original text in the vector DB. The whole book now lives on "disk" — none of it is in any context window yet.</div></div>
+    <div class="row"><div class="k">4. Query</div><div class="v">When a real question comes in, embed the question the same way, and ask the vector DB for the nearest-neighbor chunks — the handful of passages most semantically similar to the question.</div></div>
+    <div class="row"><div class="k">5. Assemble</div><div class="v">Splice just those few retrieved chunks (not the whole book) into the context window alongside the question, then generate the answer.</div></div>
+  </div>
+
+  <p>The model never "reads the whole book" for any single question — it only ever sees the few passages the vector DB judged most relevant, which is exactly why this scales to books, entire document corpora, or codebases far larger than any context window could hold. The trade-off to know cold for interviews: retrieval quality is only as good as the chunking and embedding choices — if the answer actually depends on information spread across distant, unrelated chunks (e.g. a plot detail from chapter 2 needed to explain chapter 40), naive top-k similarity search can miss it, since it retrieves by semantic similarity to the question, not by narrative or logical connection. That's a known limitation, and part of why more advanced RAG setups add a query-rewriting or multi-hop retrieval step — the agent notices the first retrieval was insufficient and searches again with a reformulated query, which is the ReAct loop from section 01 applied specifically to retrieval.</p>
+
+  <div class="callout">
+    <strong>The one thing to internalize before moving on:</strong> agentic AI is not a new model or a new algorithm. It's an architecture pattern — a loop plus tools plus memory wrapped around a model that already exists. Everything that follows in this module (failure modes, evaluation, architecture) is really just "software engineering for a component that reasons in natural language and can be subtly wrong." That framing is exactly the angle that plays to your strengths.
+  </div>
+</section>
+
+<section id="architecture">
+  <h2><span class="num">02</span> Anatomy of a multi-agent system</h2>
+  <p class="lede">Click each component. The point isn't the box — it's what fails when it's built naively.</p>
+
+  <div class="arch-diagram">
+    <div class="arch-row">
+      <div class="arch-box" data-d="orchestrator"><div class="title">Orchestrator / planner</div><div class="sub">decides who acts next</div></div>
+      <div class="arch-box" data-d="agents"><div class="title">Worker agents</div><div class="sub">specialized reasoning loops</div></div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-box" data-d="tools"><div class="title">Tool layer</div><div class="sub">function calls, APIs, code exec</div></div>
+      <div class="arch-box" data-d="memory"><div class="title">Memory</div><div class="sub">short + long term state</div></div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-box" data-d="eval"><div class="title">Evaluation / guardrails</div><div class="sub">checks output before acting</div></div>
+      <div class="arch-box" data-d="observability"><div class="title">Observability</div><div class="sub">trace, replay, cost tracking</div></div>
+    </div>
+
+    <div class="arch-detail" id="d-orchestrator">
+      <strong>Orchestrator / planner.</strong> Routes tasks to agents — either a fixed graph (LangGraph state machine) or an LLM-decided router (supervisor pattern). Naive version: an LLM call that free-forms "which agent should go next" with no bound on hops. That's how you get infinite loops. A systems engineer's instinct here is right: treat this like a state machine with a max-depth / max-iteration circuit breaker, same as you'd cap retries on a queue consumer.
+    </div>
+    <div class="arch-detail" id="d-agents">
+      <strong>Worker agents.</strong> Each is a reasoning loop (usually ReAct-style: think → act → observe → repeat) scoped to a narrow responsibility. The failure most people miss: giving one agent too many tools/responsibilities degrades reasoning quality — the model's effective "attention budget" gets diluted, same intuition as god-classes in software design.
+    </div>
+    <div class="arch-detail" id="d-tools">
+      <strong>Tool layer.</strong> Function calling / MCP servers / code execution. This is where your backend background matters most: tools need idempotency keys, timeouts, and typed schemas the model can't get subtly wrong. Untyped tool outputs are the single biggest source of silent agent failure.
+    </div>
+    <div class="arch-detail" id="d-memory">
+      <strong>Memory.</strong> Short-term = conversation window (bounded, decays). Long-term = vector store / structured facts (unbounded, needs eviction). Naive systems just keep appending to context — this is the agent equivalent of an unbounded cache with no TTL. It degrades both cost and reasoning quality (lost-in-the-middle effect).
+    </div>
+    <div class="arch-detail" id="d-eval">
+      <strong>Evaluation / guardrails.</strong> Structural validation (does the tool call match schema), semantic validation (does the output satisfy intent), and safety checks — ideally before an action executes, not just after. This is the agent-world equivalent of input validation and a canary check before rollout.
+    </div>
+    <div class="arch-detail" id="d-observability">
+      <strong>Observability.</strong> Full trace of every LLM call, tool call, and intermediate reasoning step, replayable. Without this, debugging "why did the agent do that" is pure archaeology. Maps directly to distributed tracing (OpenTelemetry) — same problem, LLM nondeterminism just makes it worse.
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>The judgment call that separates you:</strong> most candidates can draw this diagram. Few can say which of these six components is over-engineered for a given use case, and which is the one that will actually break in production. That's the question to rehearse answering out loud.
+  </div>
+</section>
+
+<section id="when">
+  <h2><span class="num">03</span> When multi-agent, when single-agent, when no agent at all</h2>
+  <p class="lede">The most senior answer to "should this be agentic" is usually "no." Walk the tree.</p>
+
+  <div class="decision-tree">
+    <div class="dt-q">Is the task's structure known and repeatable in advance?</div>
+    <div class="dt-options">
+      <div class="dt-opt" data-tree="q1-yes">Yes, fixed steps</div>
+      <div class="dt-opt" data-tree="q1-no">No, needs dynamic reasoning</div>
+    </div>
+    <div class="dt-result" id="r-q1-yes"><strong>Don't build an agent.</strong> A deterministic pipeline (plain code, maybe one LLM call for the fuzzy step) is cheaper, faster, and fully debuggable. Agentic overhead buys you nothing if the control flow doesn't need to vary. This is the single most common interview trap — people reach for agents when a DAG would do.</div>
+    <div class="dt-result" id="r-q1-no"><strong>Keep going.</strong> Dynamic reasoning over unknown-shape tasks is where agents earn their keep — e.g. "investigate why this metric moved," where the number of steps and which tools get used isn't knowable upfront.</div>
+
+    <div class="dt-q" style="margin-top:1.25rem;">Do distinct sub-tasks need genuinely different context, tools, or expertise?</div>
+    <div class="dt-options">
+      <div class="dt-opt" data-tree="q2-yes">Yes, clearly separable</div>
+      <div class="dt-opt" data-tree="q2-no">No, one coherent context</div>
+    </div>
+    <div class="dt-result" id="r-q2-yes"><strong>Multi-agent may be justified</strong> — e.g. a research agent, a coding agent, a critique agent with genuinely different tool access and system prompts. The separation should mirror a real division of responsibility, not be invented for architecture-diagram appeal.</div>
+    <div class="dt-result" id="r-q2-no"><strong>Single agent with more tools beats multi-agent with more coordination overhead.</strong> Every extra agent adds a communication/handoff failure surface. Default to the simplest thing that works — this is the same instinct as not microservice-ing a monolith prematurely.</div>
+  </div>
+</section>
+
+<section id="failures">
+  <h2><span class="num">04</span> Failure modes — what actually breaks, and the systems-engineering fix</h2>
+  <p class="lede">This is the section that differentiates you. Anyone can build a demo. Few can explain what fails at scale and why — in the language of retries, idempotency, and backpressure.</p>
+
+  <div class="failure-grid">
+    <div class="failure-card">
+      <div class="fname">Infinite / runaway loops <span class="badge">orchestration</span></div>
+      <div class="why">Orchestrator or agent keeps calling itself or handing off with no terminating condition — burns tokens and cost with no forward progress.</div>
+      <div class="fix">Hard max-iteration cap, plus a circuit breaker that halts and escalates to a human/fallback after N failed attempts — identical to a retry-with-backoff-then-dead-letter-queue pattern.</div>
+    </div>
+    <div class="failure-card">
+      <div class="fname">Context / memory bloat <span class="badge">memory</span></div>
+      <div class="why">Unbounded appending to conversation history degrades reasoning quality (lost-in-the-middle) and blows up latency + cost linearly with turns.</div>
+      <div class="fix">Summarization/compaction at intervals, explicit working-memory vs. long-term-store separation, TTL/eviction on stored facts — same discipline as cache sizing.</div>
+    </div>
+    <div class="failure-card">
+      <div class="fname">Non-idempotent tool calls <span class="badge">tools</span></div>
+      <div class="why">Model retries a failed tool call (e.g. "send email," "charge customer") and it fires twice — the model has no innate concept of "already did this."</div>
+      <div class="fix">Every side-effecting tool needs an idempotency key generated outside the model's control, exactly like you'd design a payments API.</div>
+    </div>
+    <div class="failure-card">
+      <div class="fname">Silent schema drift <span class="badge">tools</span></div>
+      <div class="why">The model calls a tool with a plausible-looking but subtly wrong argument (wrong type, missing field) that doesn't error loudly — it just produces a wrong result downstream.</div>
+      <div class="fix">Strict typed schemas (Pydantic/JSON Schema) with validation that fails loud, not silent coercion. Treat model output like untrusted user input, always.</div>
+    </div>
+    <div class="failure-card">
+      <div class="fname">Cascading hallucination in multi-agent handoff <span class="badge">multi-agent</span></div>
+      <div class="why">Agent A makes a small factual error, hands its output to agent B as ground truth, B builds on it, C builds further — error compounds and is invisible until the final output is checked.</div>
+      <div class="fix">Verification/critic agent at handoff boundaries, or at minimum passing structured evidence (not just prose summaries) between agents so downstream agents can independently check claims.</div>
+    </div>
+    <div class="failure-card">
+      <div class="fname">Cost/latency blow-up under load <span class="badge">scale</span></div>
+      <div class="why">A demo that costs $0.02 per run at 10 requests/day costs a fortune and times out at 10,000 requests/day if every step re-runs full context through the model.</div>
+      <div class="fix">Cache repeated sub-tasks, use cheaper/smaller models for routing and only the most expensive model for the hard reasoning step, batch where possible — the same tiering discipline as choosing which service gets which instance size.</div>
+    </div>
+    <div class="failure-card">
+      <div class="fname">No fallback when the model is simply wrong <span class="badge">reliability</span></div>
+      <div class="why">Teams ship agents assuming the model is mostly right, with no graceful degradation path — when it's wrong, the system has no signal and no fallback.</div>
+      <div class="fix">Confidence thresholds that route to a human-in-the-loop or a deterministic fallback path, plus logging every low-confidence decision for review — same posture as a canary deploy with automatic rollback.</div>
+    </div>
+  </div>
+</section>
+
+<section id="eval">
+  <h2><span class="num">05</span> Evaluation — the hardest unsolved part</h2>
+  <p class="lede">If you only remember one line for an interview: "evaluation is harder than building the agent, because correctness isn't binary and the task space is open-ended."</p>
+
+  <table class="compare-table">
+    <tr><th>Approach</th><th>What it checks</th><th>Weakness</th></tr>
+    <tr><td>Golden-set regression tests</td><td>Known task → known good output, run on every change</td><td>Doesn't cover the long tail of real user tasks</td></tr>
+    <tr><td>LLM-as-judge</td><td>A second model scores the agent's output against a rubric</td><td>Inherits the judge model's own blind spots and biases</td></tr>
+    <tr><td>Human review sampling</td><td>Spot-check a % of live traffic</td><td>Slow, expensive, doesn't scale to catch rare failures fast</td></tr>
+    <tr><td>Trace-level assertions</td><td>Did the agent call the right tool, in the right order, with valid args</td><td>Checks process, not whether the end result was actually useful</td></tr>
+    <tr><td>Outcome / business metrics</td><td>Did the downstream KPI move (resolution rate, conversion, etc.)</td><td>Slow feedback loop, confounded by other factors</td></tr>
+  </table>
+
+  <p>The senior answer combines layers: trace assertions catch mechanical failures fast and cheap, LLM-as-judge catches semantic quality at moderate cost, and outcome metrics are the final ground truth but arrive too late to gate a release on their own. This is directly analogous to your A/B testing background — unit tests, then an offline eval set, then a live holdout, is the same ladder as unit tests → staging → canary → full rollout.</p>
+</section>
+
+<section id="qa">
+  <h2><span class="num">06</span> Interview questions at staff/senior/lead depth</h2>
+  <p class="lede">Click to reveal a strong answer shape — not a script, a structure to reason from live.</p>
+
+  <div class="qa-list">
+    <div class="qa-item">
+      <div class="qa-q"><span><span class="level staff">Staff</span>How would you decide between a single agent with many tools vs. a multi-agent system?</span><span class="chev">▾</span></div>
+      <div class="qa-a"><div class="qa-a-inner">
+        Start from the default: single agent, more tools, until you hit a concrete failure that multi-agent actually solves.
+        <ul>
+          <li>Signal for multi-agent: distinct system prompts/personas genuinely improve quality (e.g. a "critic" persona catches errors a single agent misses on itself).</li>
+          <li>Signal for multi-agent: tool sets are so large that one agent's tool-selection accuracy degrades — this is measurable, not vibes.</li>
+          <li>Cost of multi-agent: coordination overhead, more failure surfaces, harder to debug, higher latency. Name this cost explicitly — showing you know it's not free is the differentiator.</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q"><span><span class="level staff">Staff</span>An agent in production started behaving unpredictably last week. Walk me through how you'd debug it.</span><span class="chev">▾</span></div>
+      <div class="qa-a"><div class="qa-a-inner">
+        This is testing whether you treat it like a distributed systems incident, not "prompt engineering vibes."
+        <ul>
+          <li>First: what changed — model version bump, upstream data/tool schema change, traffic pattern shift, prompt/config deploy. Check deploy logs before touching the prompt.</li>
+          <li>Pull traces for failing cases, look for a pattern: same tool, same input shape, same context length, same time-of-day (rate limits/timeouts)?</li>
+          <li>Reproduce offline against the golden eval set to confirm it's systemic vs. a handful of edge cases.</li>
+          <li>Only after isolating the actual failure mode do you touch the prompt/architecture — otherwise you're guessing.</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q"><span><span class="level senior">Senior</span>How do you prevent an agent from taking a destructive or costly action by mistake?</span><span class="chev">▾</span></div>
+      <div class="qa-a"><div class="qa-a-inner">
+        Layered defense, not one gate: schema-level validation on tool args, a policy/guardrail layer that blocks known-dangerous action classes outright, human-in-the-loop confirmation for irreversible or high-cost actions above a threshold, and idempotency keys so a retry can't double-execute. The interview signal here is knowing that "the model won't do that" is not a safety mechanism.
+      </div></div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q"><span><span class="level staff">Staff</span>How would you estimate and control the cost of an agentic system at scale?</span><span class="chev">▾</span></div>
+      <div class="qa-a"><div class="qa-a-inner">
+        Cost = (avg tokens per step) × (avg steps per task) × (tasks per day) × (model price). Each factor is a lever:
+        <ul>
+          <li>Route cheap/fast models for routing and simple sub-tasks, reserve the expensive model for the genuinely hard reasoning step.</li>
+          <li>Cap steps with the same circuit-breaker logic used for infinite loops.</li>
+          <li>Cache identical or near-identical sub-task results.</li>
+          <li>Track cost per task type in observability so runaway categories are visible before they're a surprise bill — same instinct as per-service cost attribution in Kubernetes.</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q"><span><span class="level senior">Senior</span>What's the difference between RAG and giving an agent a search tool?</span><span class="chev">▾</span></div>
+      <div class="qa-a"><div class="qa-a-inner">
+        Classic RAG is a fixed pipeline: retrieve top-k chunks, stuff into context, generate — one shot, no reasoning about whether the retrieval was good. An agent with a search tool can reason: issue a query, look at results, decide they're insufficient, reformulate, search again, or use a different tool entirely. The trade-off is latency and cost (multiple round trips) vs. robustness (it can recover from a bad first retrieval). Know when the fixed pipeline is actually the better choice: low-latency requirements, well-understood query patterns.
+      </div></div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q"><span><span class="level staff">Staff</span>How is evaluating an agent different from evaluating a classic ML model?</span><span class="chev">▾</span></div>
+      <div class="qa-a"><div class="qa-a-inner">
+        A classifier has one output and a known ground truth — you compute precision/recall and you're done. An agent has an open-ended trajectory: multiple valid paths can reach a good outcome, and the same path can look fine step-by-step but produce a bad final result. You need process-level checks (right tool, right order) and outcome-level checks (did it actually solve the task) simultaneously, and neither alone is sufficient. This is the honest, nuanced answer — most candidates only mention one layer.
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gaps">
+  <h2><span class="num">07</span> What most people's mental model is missing</h2>
+  <p class="lede">Things worth adding to your prep that don't show up in typical "agentic AI" tutorials.</p>
+
+  <div class="gap-list">
+    <div class="gap-item">
+      <div class="gname">Determinism budget</div>
+      <div class="gwhy">Every agentic system is a mix of deterministic code and nondeterministic model calls. The senior skill is deciding, component by component, which parts should be deterministic code (routing logic, validation, retries) vs. left to the model (the actual fuzzy reasoning). Most failures come from letting the model own decisions that should have been deterministic.</div>
+    </div>
+    <div class="gap-item">
+      <div class="gname">Context engineering vs. prompt engineering</div>
+      <div class="gwhy">Prompt engineering is wording one instruction well. Context engineering is deciding what information (memory, retrieved docs, tool results, prior steps) is even in the window at each turn, and in what order — this is the actual bottleneck in production agents, and it's a systems/data problem, not a wording problem.</div>
+    </div>
+    <div class="gap-item">
+      <div class="gname">Human-in-the-loop as a first-class architecture component</div>
+      <div class="gwhy">Not a fallback bolted on later — design the escalation path (confidence thresholds, review queues, audit trail) from day one for anything touching money, safety, or irreversible actions.</div>
+    </div>
+    <div class="gap-item">
+      <div class="gname">Version pinning and eval-gated model upgrades</div>
+      <div class="gwhy">A new model version can silently change agent behavior (different tool-calling style, different verbosity). Treat model version bumps like a dependency upgrade — run the eval suite before rolling out, same as you'd gate a library upgrade with CI.</div>
+    </div>
+    <div class="gap-item">
+      <div class="gname">The economics of "why not just fine-tune"</div>
+      <div class="gwhy">Interviewers at senior level probe whether you understand the trade-off between prompting/RAG/tools vs. fine-tuning a smaller model for a narrow repeated task — fine-tuning trades flexibility for lower per-call cost and latency once the task is well-understood and high-volume. Know when you'd advocate for it.</div>
+    </div>
+  </div>
+</section>
+
+<footer>Souvik Samanta — Applied AI Systems Engineer track — interview intuition series, module 1 of 5</footer>
+</div>
+
+<script>
+var loopContent = {
+  thought: '<span class="tag2">Thought</span><br>The model reasons in text about what it knows and what it needs next. Example, for "why did churn spike this week": <em>"I should first check if this is one segment or all users."</em> This step is just the model thinking out loud — no side effects yet.',
+  action: '<span class="tag2">Action</span><br>The model outputs a structured tool call based on its thought, e.g. <code>query_segment_churn(segment="all")</code>. This is the moment it stops "talking" and starts "doing" — your code intercepts this and actually executes it.',
+  observation: '<span class="tag2">Observation</span><br>The real result of that action gets fed back into the model\'s context, e.g. <em>"Churn is up 40% specifically in the free-trial segment, other segments flat."</em> The model now has new information it didn\'t have a moment ago.',
+  repeat: '<span class="tag2">Repeat or answer</span><br>The model decides: is this enough to answer, or do I need another thought → action → observation cycle? Here it might think <em>"free-trial segment specifically — let me check if a recent pricing or onboarding change shipped this week,"</em> and loop again. Eventually it stops looping and returns a final answer. That stopping decision is itself made by the model — which is exactly why runaway loops are a real failure mode, covered later.'
+};
+document.querySelectorAll('.loop-step-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.loop-step-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById('loop-panel').innerHTML = loopContent[btn.getAttribute('data-loop')];
+  });
+});
+
+document.querySelectorAll('.arch-box').forEach(function(box) {
+  box.addEventListener('click', function() {
+    var id = box.getAttribute('data-d');
+    var wasActive = box.classList.contains('active');
+    document.querySelectorAll('.arch-box').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelectorAll('.arch-detail').forEach(function(d){ d.classList.remove('show'); });
+    if (!wasActive) {
+      box.classList.add('active');
+      document.getElementById('d-' + id).classList.add('show');
+    }
+  });
+});
+
+document.querySelectorAll('.dt-opt').forEach(function(opt) {
+  opt.addEventListener('click', function() {
+    var key = opt.getAttribute('data-tree');
+    var group = key.split('-')[0];
+    document.querySelectorAll('.dt-opt[data-tree^="' + group + '-"]').forEach(function(o){ o.classList.remove('selected'); });
+    document.querySelectorAll('.dt-result[id^="r-' + group + '-"]').forEach(function(r){ r.classList.remove('show'); });
+    opt.classList.add('selected');
+    document.getElementById('r-' + key).classList.add('show');
+  });
+});
+
+document.querySelectorAll('.qa-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    q.parentElement.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>

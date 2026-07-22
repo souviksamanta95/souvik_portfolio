@@ -399,6 +399,36 @@
     }
     .tag:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ── Notes ── */
+    #notes { background: var(--bg); }
+    .notes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .note-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; position: relative; overflow: hidden;
+      transition: all var(--transition); display: flex; flex-direction: column;
+    }
+    .note-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--green));
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .note-card:hover { border-color: rgba(79,142,247,0.4); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .note-card:hover::before { opacity: 1; }
+    .note-card.soon { opacity: 0.55; }
+    .note-card.soon:hover { transform: none; box-shadow: none; border-color: var(--border); }
+    .note-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .note-module { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .note-status { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; font-family: 'JetBrains Mono', monospace; padding: 3px 10px; border-radius: 20px; }
+    .note-status.live { color: var(--green); background: rgba(52,211,153,0.12); }
+    .note-status.soon { color: var(--muted); background: var(--bg3); }
+    .note-title { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 10px; }
+    .note-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; flex: 1; }
+    .note-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .note-open { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--accent); margin-top: auto; }
+    .note-open svg { transition: transform var(--transition); }
+    .note-card:hover .note-open svg { transform: translate(2px,-2px); }
+    @media (max-width: 900px) { .notes-grid { grid-template-columns: 1fr; } }
+
     /* ── Timeline ── */
     /* ── Experience Layout ── */
     #experience { background: var(--bg); }
@@ -796,6 +826,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#notes">Notes</a></li>
         <li><a href="#writing">Writing</a></li>
         <li><a href="Souvik_Samanta_CV_FT.pdf" download class="nav-cta" style="background:transparent;border:1px solid var(--border);color:var(--muted);">↓ CV</a></li>
         <li><a href="#contact" class="nav-cta">Work With Me</a></li>
@@ -811,12 +842,12 @@
     <div class="container">
       <div class="hero-inner">
       <div class="hero-content">
-        <div class="hero-badge">Transitioning to Applied AI Systems Engineer · Open to FT roles &amp; consulting</div>
+        <div class="hero-badge">Data Scientist II · Applied AI Systems thinking · Open to FT roles &amp; consulting</div>
         <h1 class="hero-name">Souvik<br/><span class="accent">Samanta</span></h1>
         <p class="hero-title">Data Scientist II <span>→ Applied AI Systems Engineer</span></p>
         <p class="hero-desc">
           I build <strong>production AI systems at scale</strong> — combining deep data science expertise with backend engineering, distributed systems thinking, and AI infrastructure.
-          Currently: churn prediction across millions at Coursera. Next: systems engineering depth + LLM agents. 6+ years in ML, founder of fintech platform, 2–3 year path to Senior/Staff roles.
+          My view: ML that can't survive production systems constraints isn't finished work. That shows up in churn prediction across millions of learners at Coursera, an agentic AI workflow connecting LLMs to real business data, and 6+ years building end-to-end — including founding a full-stack fintech trading platform.
         </p>
         <div class="hero-ctas">
           <a href="#projects" class="btn-primary">
@@ -864,9 +895,9 @@
       <div class="about-grid">
         <div class="about-text">
           <div class="section-tag">// about</div>
-          <h2 class="section-title">Building toward Applied AI Systems Engineer</h2>
-          <p>I'm a <strong>Senior Data Scientist with 6+ years</strong> across EdTech, travel, real estate, and fintech — architecting my career toward <strong>Applied AI Systems Engineer</strong>. Currently at <strong>Coursera</strong>, I own lifecycle analytics and CRM measurement across millions of learners. Next 2–3 years: mastering distributed systems, backend engineering, and AI infrastructure to ship production AI systems reliably.</p>
-          <p><strong>Why this path?</strong> Most specialists go deep in one dimension. I'm building across all: deep <strong>backend engineering</strong> (FastAPI, PostgreSQL, Kubernetes), <strong>distributed systems thinking</strong> (CAP theorem, event streaming, consistency), <strong>AI infrastructure</strong> (RAG, multi-agent orchestration, evaluation pipelines), <strong>product analytics</strong> (A/B testing, experimentation, business impact), and <strong>production discipline</strong> (CI/CD, observability, incident response).</p>
+          <h2 class="section-title">Data science + systems engineering, applied to production AI</h2>
+          <p>I'm a <strong>Senior Data Scientist with 6+ years</strong> across EdTech, travel, real estate, and fintech. Currently at <strong>Coursera</strong>, I own lifecycle analytics and CRM measurement across millions of learners — including an agentic AI workflow that connects an LLM directly to production data so stakeholders can self-serve root-cause analysis. I think of myself as an <strong>Applied AI Systems Engineer</strong>: someone who brings both ML judgment and systems rigor to AI that has to actually survive production.</p>
+          <p><strong>Why this framing?</strong> Most specialists go deep in one dimension. I bring together <strong>backend engineering</strong> (FastAPI, PostgreSQL, Kubernetes), <strong>distributed systems thinking</strong> (CAP theorem, event streaming, consistency), <strong>AI infrastructure</strong> (RAG, multi-agent orchestration, evaluation pipelines), <strong>product analytics</strong> (A/B testing, experimentation, business impact), and <strong>production discipline</strong> (CI/CD, observability, incident response).</p>
           <p><strong>Proof point:</strong> Co-founded and built Quantbot Securities from scratch during COVID — full-stack: ML signal models, async FastAPI backend, Kubernetes orchestration, real-time WebSocket trading infrastructure. 5+ years operation, real customers, real trading profits.</p>
           <p>Before data science, structural engineer at M. N. Dastur — learned systems thinking, rigorous validation, and the cost of errors. MBA in Finance & Analytics, IMI New Delhi.</p>
         </div>
@@ -1348,6 +1379,98 @@
                 View on LinkedIn
               </a>
             </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Notes ── -->
+  <section id="notes">
+    <div class="container">
+      <div class="section-tag">// interview intuition series</div>
+      <h2 class="section-title">Deep dives &amp; interview notes</h2>
+      <p class="section-sub">Interactive study modules I'm building for myself while preparing for Applied AI Systems Engineer roles &mdash; staff/senior-level depth on ML fundamentals and agentic AI, published here as I go.</p>
+      <div class="notes-grid">
+
+        <a class="note-card" href="interview_prep/05_agentic_ai.html" target="_blank" rel="noopener">
+          <div class="note-meta">
+            <span class="note-module">Module 01</span>
+            <span class="note-status live">Live</span>
+          </div>
+          <h3 class="note-title">Agentic AI: architecture &amp; failure modes</h3>
+          <p class="note-desc">What an agent actually is, the think&rarr;act&rarr;observe loop, memory vs. context window vs. vector DB, and the failure modes that separate a systems engineer's intuition from a framework demo.</p>
+          <div class="note-tags">
+            <span class="tag">Agent architecture</span>
+            <span class="tag">MCP</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Evaluation</span>
+          </div>
+          <span class="note-open">
+            Open module
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </span>
+        </a>
+
+        <a class="note-card" href="interview_prep/01_shallow_ml.html" target="_blank" rel="noopener">
+          <div class="note-meta">
+            <span class="note-module">Module 02</span>
+            <span class="note-status live">Live</span>
+          </div>
+          <h3 class="note-title">Shallow ML depth: XGBoost, LightGBM &amp; logistic regression</h3>
+          <p class="note-desc">How gradient boosting actually learns, level-wise vs. leaf-wise tree growth, marketing vs. fraud tuning side by side, and the caveats (leakage, calibration, monotonicity) that separate senior from junior.</p>
+          <div class="note-tags">
+            <span class="tag">XGBoost</span>
+            <span class="tag">LightGBM</span>
+            <span class="tag">Calibration</span>
+            <span class="tag">Fraud vs. marketing</span>
+          </div>
+          <span class="note-open">
+            Open module
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </span>
+        </a>
+
+        <div class="note-card soon">
+          <div class="note-meta">
+            <span class="note-module">Module 03</span>
+            <span class="note-status soon">In progress</span>
+          </div>
+          <h3 class="note-title">Time series: ARIMA, SARIMA &amp; forecasting gotchas</h3>
+          <p class="note-desc">Stationarity, autocorrelation, when ARIMA/SARIMA/Prophet actually apply, and where forecasting quietly breaks in production.</p>
+          <div class="note-tags">
+            <span class="tag">ARIMA</span>
+            <span class="tag">SARIMA</span>
+            <span class="tag">Prophet</span>
+          </div>
+        </div>
+
+        <div class="note-card soon">
+          <div class="note-meta">
+            <span class="note-module">Module 04</span>
+            <span class="note-status soon">In progress</span>
+          </div>
+          <h3 class="note-title">Deep learning: when, why, and the gotchas</h3>
+          <p class="note-desc">When DL actually beats shallow ML, core architecture vocabulary, and the assumptions that trip people up in interviews.</p>
+          <div class="note-tags">
+            <span class="tag">Architectures</span>
+            <span class="tag">Attention</span>
+            <span class="tag">Embeddings</span>
+          </div>
+        </div>
+
+        <div class="note-card soon">
+          <div class="note-meta">
+            <span class="note-module">Module 05</span>
+            <span class="note-status soon">In progress</span>
+          </div>
+          <h3 class="note-title">ML pipelines: deployment, versioning &amp; drift</h3>
+          <p class="note-desc">Deployment patterns, model versioning, drift detection, and the monitoring stack senior/staff interviewers probe for.</p>
+          <div class="note-tags">
+            <span class="tag">MLflow</span>
+            <span class="tag">Drift detection</span>
+            <span class="tag">Monitoring</span>
           </div>
         </div>
 
