@@ -1165,7 +1165,7 @@
       <div class="projects-header">
         <div class="section-tag">// selected work</div>
         <h2 class="section-title">Impact that speaks in numbers</h2>
-        <p class="section-sub">6+ years of shipped ML systems: from churn prediction at Coursera (millions of users) to founding Quantbot (distributed trading platform). Every project combines data science depth with systems engineering lessons learned.</p>
+        <p class="section-sub">6+ years of shipped ML systems: from churn prediction at Coursera (millions of users) to founding mySerenity.in (guardrailed mental health AI, pivoted from Quantbot's trading platform) as a personal project alongside full-time work. Every project combines data science depth with systems engineering lessons learned.</p>
       </div>
       <div class="projects-grid">
 
@@ -1219,17 +1219,42 @@
           </div>
         </div>
 
-        <!-- Project 3: Quantbot / mySerenity Trading Platform -->
+        <!-- Project 3: mySerenity.in Mental Health Platform (current, pivoted from Quantbot) -->
         <div class="project-card">
           <div class="project-meta">
-            <span class="project-company">Quantbot Securities · mySerenity</span>
-            <span class="project-type">Fintech · Full-Stack AI Systems</span>
+            <span class="project-company">mySerenity.in</span>
+            <span class="project-type">Healthtech · Full-Stack + Agentic AI · Personal Project</span>
           </div>
-          <h3 class="project-title">Automated Copy-Trading Platform (Founder)</h3>
-          <p class="project-desc"><strong>Impact:</strong> Co-founded &amp; built end-to-end cloud platform (internally called <strong>mySerenity</strong>) from scratch during COVID, serving real customers with real trading profits. Led <strong>all backend architecture + ML engineering</strong> — trade signal generation (LSTM, Transformer concepts), price movement prediction, portfolio risk models. Designed distributed system: FastAPI async request handling, Django ORM, PostgreSQL transactions, Redis caching, WebSocket real-time streaming. Containerized with Docker, orchestrated via Kubernetes with auto-scaling. Real-time broker API integrations. <strong>5+ years operation</strong>, with <strong>ARIA</strong> — an in-platform conversational assistant — currently being extended with an agentic memory layer (local LLMs via Ollama, vector-DB-backed session summaries) and a first-class safety/escalation gate, as a hands-on proof point for agentic AI systems design.</p>
+          <h3 class="project-title">Mental Health Platform with ARIA (Founder)</h3>
+          <p class="project-desc"><strong>Impact:</strong> An independent personal project, built and run in parallel with full-time employment. Same company/entity as Quantbot below — pivoted to a new identity after Quantbot's copy-trading platform was shut down due to regulatory constraints. Built from scratch starting January 2026 — a live platform (myserenity.in) connecting individuals with mental health professionals (psychiatrists and psychologists), with a community feature, secure consent-based video consultations, billing, and prescription management. At its core is <strong>ARIA</strong>, a guardrailed, specialized mental health chatbot capable of long conversations with patients that <strong>summarizes each conversation</strong> to help clinicians analyze patient state efficiently between sessions. Built the full stack solo: Django backend, Next.js frontend, PostgreSQL + Redis, real-time video via Janus (WebRTC), and private S3 buckets storing consent-based call recordings.</p>
+          <div class="project-metrics">
+            <span class="metric-pill">Live since Jan 2026</span>
+            <span class="metric-pill">Guardrailed clinical AI</span>
+            <span class="metric-pill">Solo full-stack build</span>
+          </div>
+          <div class="project-tech">
+            <span class="tag">Django</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Redis</span>
+            <span class="tag">Janus (WebRTC)</span>
+            <span class="tag">Private S3</span>
+            <span class="tag">Guardrailed LLM Chatbot</span>
+            <span class="tag">Consent-Based Recording</span>
+          </div>
+        </div>
+
+        <!-- Project 3b: Quantbot Trading Platform (predecessor, shut down) -->
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-company">Quantbot Securities</span>
+            <span class="project-type">Fintech · Full-Stack AI Systems · Personal Project</span>
+          </div>
+          <h3 class="project-title">Automated Copy-Trading Platform (Founder, shut down)</h3>
+          <p class="project-desc"><strong>Impact:</strong> An independent personal project, built and run in parallel with full-time employment. Co-founded &amp; built end-to-end cloud platform from scratch during COVID, serving real customers with real trading profits. Led <strong>all backend architecture + ML engineering</strong> — trade signal generation (LSTM, Transformer concepts), price movement prediction, portfolio risk models. Designed distributed system: FastAPI async request handling, Django ORM, PostgreSQL transactions, Redis caching, WebSocket real-time streaming. Containerized with Docker, orchestrated via Kubernetes with auto-scaling. Real-time broker API integrations. <strong>Shut down in early 2026 due to regulatory constraints on retail algorithmic copy-trading</strong> — the same company/entity then pivoted into mySerenity.in above.</p>
           <div class="project-metrics">
             <span class="metric-pill">Real trading profits</span>
-            <span class="metric-pill">5+ years operation</span>
+            <span class="metric-pill">5 years operation</span>
             <span class="metric-pill">Founder's full ownership</span>
           </div>
           <div class="project-tech">
@@ -1243,7 +1268,6 @@
             <span class="tag">LSTM/Transformers</span>
             <span class="tag">Async APIs</span>
             <span class="tag">ML Risk Models</span>
-            <span class="tag">ARIA · Agentic AI (in progress)</span>
           </div>
         </div>
 

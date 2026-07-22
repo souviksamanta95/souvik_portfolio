@@ -1,11 +1,13 @@
 # Future Plans
 
-## ARIA — Agentic Memory & Safety Layer for mySerenity's Mental Health Chatbot
+## ARIA — Agentic Memory & Model Layer for mySerenity.in's Mental Health Chatbot
 
-**Status:** Planned (not started) — captured 2026-07-23
-**Why this project:** Real, running proof of agentic AI systems design — memory architecture, model portability, and safety-critical escalation — built on top of the existing mySerenity platform rather than a toy demo. Directly supports the "Applied AI Systems Engineer" positioning: backend/systems fluency (FastAPI, Postgres, Docker/Kubernetes already in place) combined with genuine agentic AI judgment, not just framework familiarity.
+**Status:** Partially planned, partially already live — corrected 2026-07-23
+**Correction (2026-07-23):** This document originally conflated mySerenity with Quantbot (Souvik's trading platform) — that was wrong. mySerenity.in is a separate, real, live mental health platform built from scratch since January 2026 (Django, Next.js, Postgres, Redis, Janus for video, private S3 for consent-based recordings), with its own community feature, billing, and prescription management. Quantbot has no relation to it. See the corrected `Souvik_Professional_Profile.md` for the full, accurate picture of both projects.
 
-**Context:** mySerenity already has an AI chatbot, ARIA, intended to chat with users who may be mental health patients. Chat history is already persisted in a database. The goal is to add agentic memory (vector DB over chat summaries) and a dual model backend, at zero/near-zero cost, as a portfolio-grade showcase project.
+**Also corrected:** ARIA is not a from-scratch build — it already exists in production as a **guardrailed, specialized mental health chatbot** capable of long conversations with patients, and it **already summarizes conversations** to help psychiatrists/psychologists analyze patient state. The plan below was written assuming none of that existed yet. Sections 3 and 4 below (agentic retrieval decision, safety gate) describe capabilities ARIA may already have in some form — treat them as a discussion starting point to compare against the actual current implementation, not as greenfield work. Section 1 (dual local/hosted model backend) and section 2 (vector-DB-backed cross-session memory, if the current summarization isn't already vector-searchable) are more likely to still be genuine open enhancements, but confirm against the real codebase before treating any of this as a build plan.
+
+**Why this project:** Real, running proof of agentic AI systems design — memory architecture, model portability, and safety-critical escalation — on a live platform, not a toy demo. Directly supports the "Applied AI Systems Engineer" positioning: backend/systems fluency (Django, Next.js, Postgres, Redis, real-time media infra already in place) combined with genuine agentic AI judgment, not just framework familiarity.
 
 ---
 

@@ -181,9 +181,39 @@
 
 ---
 
-### 4. Quantbot Securities — Founder & ML / Backend Engineer
-**Dates:** Jan 2021–Jan 2026  
+### 4a. mySerenity.in (Quantbot Securities, rebranded) — Founder & Full-Stack/AI Engineer
+**Dates:** Jan 2026–Present
+**Organization:** Same company/entity as Quantbot Securities — pivoted to a new brand and product after Quantbot's copy-trading platform was shut down due to regulatory constraints
+**Note:** Independent personal project, built and run in parallel with full-time employment (Coursera), not a full-time role
+
+#### What Happened
+- Quantbot's retail copy-trading platform was shut down in early 2026 due to regulatory constraints on algorithmic copy-trading
+- Rather than closing the company, pivoted it to a new identity and product: **mySerenity.in**, a mental health platform connecting individuals with psychiatrists and psychologists
+- This pivot gave direct, hands-on exposure to full-stack development and applied AI work beyond what the trading platform required
+
+#### What Was Built
+- Live platform (myserenity.in) with a community feature for individuals seeking mental health support
+- Secure, consent-based video consultations between patients and clinicians (Janus WebRTC media server)
+- Billing and prescription management for clinicians
+- Private S3 buckets storing consent-based call recordings
+- **ARIA** — a guardrailed, specialized mental health chatbot capable of long conversations with patients, which **summarizes conversations** to help psychiatrists/psychologists analyze patient state between sessions
+
+#### Tech Stack
+**Backend:** Django  
+**Frontend:** Next.js  
+**Database:** PostgreSQL  
+**Caching:** Redis  
+**Real-time/Media:** Janus (WebRTC), private S3 (consent-based recordings)
+
+#### Why This Matters for Positioning
+A live, full-stack build in a genuinely sensitive domain (mental health), combining backend engineering, modern frontend, real-time media infrastructure, secure consent-based data handling, and a guardrailed, domain-specialized conversational AI already in production — a concrete proof point for "Applied AI Systems Engineer," built solo, end to end.
+
+---
+
+### 4b. Quantbot Securities — Founder & ML / Backend Engineer (predecessor to mySerenity.in)
+**Dates:** Jan 2021–early 2026 (shut down due to regulatory constraints; company pivoted to mySerenity.in above)
 **Role:** Co-founder; ML modeling + backend architecture
+**Note:** Independent personal project, built and run in parallel with full-time employment, not a full-time role
 
 #### Achievements & Business Impact
 
@@ -218,9 +248,9 @@
 **DevOps:** CI/CD with GitHub Actions, monitoring/alerting
 
 #### Current Status
-- Platform still operational (Jan 2021–Jan 2026, then ongoing)
-- Learning vehicle: Continuously adding agentic workflows, long-term memory, AI observability
-- Planned upgrades: Multi-agent orchestration, evaluation pipelines, distributed task execution
+- Platform shut down in early 2026 due to regulatory constraints on retail algorithmic copy-trading
+- Company pivoted to a new brand and product: mySerenity.in (see entry 4a above) — same entity, new identity, direct continuation of the founder journey
+- The agentic-workflow/multi-agent-orchestration learning goals originally planned for Quantbot's trading platform are no longer applicable to that platform; any agentic AI work now happens in the context of mySerenity.in / ARIA instead
 
 ---
 
@@ -464,9 +494,9 @@
 
 ---
 
-### Months 12–24: Synthesis & mySerenity Flagship Project
+### Months 12–24: Synthesis & Quantbot Flagship Project
 
-**Continuous Enhancement of mySerenity (Quantbot Trading Platform):**
+**Continuous Enhancement of Quantbot (Trading Platform):**
 - Phase 1: Add agentic workflows (agents for market analysis, position sizing)
 - Phase 2: Long-term memory (persistent conversation history, learned preferences)
 - Phase 3: Tool calling (agents interact with market APIs, portfolio management APIs)
@@ -601,7 +631,7 @@ ai-engineering-lab/
 ## Weekly Learning Plan (~10 Hours)
 
 - **3 hours reading:** Chapters from books, academic papers, blog posts
-- **4 hours building:** Coding projects, Kaggle competitions, mySerenity enhancements
+- **4 hours building:** Coding projects, Kaggle competitions, Quantbot enhancements
 - **2 hours studying open-source:** Reading architecture of LangGraph, DSPy, vLLM, etc.
 - **1 hour writing:** Blog posts, README updates, notes
 
@@ -661,34 +691,44 @@ A professional who combines:
 
 ---
 
-## Flagship Project: mySerenity
+## Flagship Project (Historical): Quantbot Copy-Trading Platform — Shut Down
 
 **What:** Quantitative copy-trading platform with AI-powered enhancements  
-**Why:** Proof of concept for full-stack AI systems engineering
+**Status:** Shut down in early 2026 due to regulatory constraints on retail algorithmic copy-trading. The roadmap below was the original plan while the platform was still operating; it is no longer being pursued, since the platform itself no longer exists. Retained here for historical accuracy only — see "Flagship Project: mySerenity.in" below for the current, active founder project (same company, new brand).
 
-**Current State (Jan 2026):**
-- Functional trading backend (FastAPI + Django)
-- Containerized with Docker, orchestrated via Kubernetes
-- PostgreSQL data store, Redis caching
+**Original plan while operating (no longer active):**
 
-**Planned Enhancements (Next 2 Years):**
+| Phase | Feature | Impact |
+|-------|---------|--------|
+| **1** | Agentic workflows (market analysis agents) | Demonstrate multi-agent orchestration |
+| **2** | Long-term memory (conversation history, learned preferences) | Show memory management at scale |
+| **3** | Tool calling (agents interact with broker APIs, portfolio management) | Prove tool integration, reasoning |
+| **4** | Evaluation pipelines (benchmark agent decisions, win rates) | Demonstrate evaluation frameworks |
+| **5** | AI observability (trace reasoning, audit logs, performance metrics) | Show production AI ops |
 
-| Phase | Timeline | Feature | Impact |
-|-------|----------|---------|--------|
-| **1** | Months 1-3 | Agentic workflows (market analysis agents) | Demonstrate multi-agent orchestration |
-| **2** | Months 3-6 | Long-term memory (conversation history, learned preferences) | Show memory management at scale |
-| **3** | Months 6-9 | Tool calling (agents interact with broker APIs, portfolio management) | Prove tool integration, reasoning |
-| **4** | Months 9-12 | Evaluation pipelines (benchmark agent decisions, win rates) | Demonstrate evaluation frameworks |
-| **5** | Months 12-15 | AI observability (trace reasoning, audit logs, performance metrics) | Show production AI ops |
-| **6** | Months 15-18 | Event-driven architecture (Kafka for market events) | Demonstrate event streaming |
-| **7** | Months 18-21 | Distributed task execution (Celery/Temporal for long-running tasks) | Prove distributed computing |
-| **8** | Months 21-24 | Metrics dashboards (Grafana: agent performance, portfolio health) | Show monitoring at scale |
-| **9** | Months 24-27 | Load testing (1000+ concurrent traders) | Demonstrate reliability under load |
-| **10** | Months 27-30 | CI/CD pipeline (GitHub Actions, automated testing, canary deployments) | Production-ready operations |
+---
 
-**GitHub Showcase:**
-- Public repository with documentation, architecture diagrams, deployment guides
-- Case study: "From Trading Platform to AI-Powered System: A 2-Year Transformation"
+## Flagship Project: mySerenity.in — Mental Health Platform
+
+**What:** A platform connecting individuals with mental health professionals (psychiatrists and psychologists), built from scratch starting January 2026, live at myserenity.in. Built under the same company/entity as Quantbot Securities, after Quantbot's copy-trading platform was shut down due to regulatory constraints — a founder pivot into a new domain and identity, not an unrelated side project.
+
+**Core features:**
+- Community feature for individuals seeking mental health support
+- Secure, consent-based video consultations (Janus WebRTC media server) between patients and clinicians
+- Billing and prescription management for clinicians
+- Private S3 buckets storing consent-based call recordings
+- **ARIA** — a guardrailed, specialized mental health chatbot that can hold long conversations with patients and summarizes those conversations to help psychiatrists and psychologists analyze patient state ahead of or between sessions
+
+**Tech stack:**
+- **Backend:** Django
+- **Frontend:** Next.js
+- **Database:** PostgreSQL
+- **Caching:** Redis
+- **Video/calls:** Janus (WebRTC media server), consent-based recording to private S3 buckets
+
+**Why this project matters for positioning:** This is a live, real-world, full-stack build in a genuinely sensitive domain (mental health), combining backend engineering (Django, Postgres, Redis), modern frontend (Next.js), real-time media infrastructure (Janus/WebRTC), secure data handling (private S3, consent-based recording), and a guardrailed, domain-specialized conversational AI (ARIA) already in production — not a hypothetical or planned system. It is a stronger, more concrete proof of "Applied AI Systems Engineer" capability than a demo project, since it required solving real safety, consent, and clinical-workflow constraints end to end.
+
+**Note:** mySerenity.in is the same company as Quantbot, rebranded — a founder pivot after Quantbot's copy-trading platform was shut down due to regulatory constraints, not a separate unrelated venture. An earlier version of this profile incorrectly used "mySerenity" as an internal codename for Quantbot's planned trading-agent enhancements while Quantbot was still operating — that has been corrected here to reflect the actual pivot and current live product.
 
 ---
 
