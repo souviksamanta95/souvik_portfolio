@@ -181,37 +181,37 @@
 
 ---
 
-### 4a. mySerenity.in (Quantbot Securities, rebranded) — Founder & Full-Stack/AI Engineer
-**Dates:** Jan 2026–Present
-**Organization:** Same company/entity as Quantbot Securities — pivoted to a new brand and product after Quantbot's copy-trading platform was shut down due to regulatory constraints
-**Note:** Independent personal project, built and run in parallel with full-time employment (Coursera), not a full-time role
+### 4a. mySerenity.in — Founder & Full-Stack/AI Engineer — CLOSED (historical, not on CV/site)
+**Dates:** Jan 2026–Sept 2026 (closed)
+**Organization:** Same company/entity as Quantbot Securities — pivoted to this brand/product after Quantbot's copy-trading platform was shut down due to regulatory constraints, then closed itself in Sept 2026
+**Note:** Independent personal project, run in parallel with full-time employment (Coursera), never a full-time role. **Closed as of 2026-09-29 per Souvik — removed entirely from the live site and CV at his explicit request. Retained here only as a historical record; do not reference as active or list it on any outward-facing document going forward.**
 
-#### What Happened
+#### What Happened (historical)
 - Quantbot's retail copy-trading platform was shut down in early 2026 due to regulatory constraints on algorithmic copy-trading
-- Rather than closing the company, pivoted it to a new identity and product: **mySerenity.in**, a mental health platform connecting individuals with psychiatrists and psychologists
-- This pivot gave direct, hands-on exposure to full-stack development and applied AI work beyond what the trading platform required
+- Rather than closing the company, pivoted it to a new identity and product: mySerenity.in, a mental health platform connecting individuals with psychiatrists and psychologists
+- The platform itself was subsequently closed in September 2026 (reason not specified to Claude — do not speculate or invent one)
 
-#### What Was Built
+#### What Was Built (historical)
 - Live platform (myserenity.in) with a community feature for individuals seeking mental health support
 - Secure, consent-based video consultations between patients and clinicians (Janus WebRTC media server)
 - Billing and prescription management for clinicians
 - Private S3 buckets storing consent-based call recordings
-- **ARIA** — a guardrailed, specialized mental health chatbot capable of long conversations with patients, which **summarizes conversations** to help psychiatrists/psychologists analyze patient state between sessions
+- A guardrailed, specialized mental health chatbot capable of long conversations with patients, which summarized conversations to help psychiatrists/psychologists analyze patient state between sessions
 
-#### Tech Stack
+#### Tech Stack (historical)
 **Backend:** Django  
 **Frontend:** Next.js  
 **Database:** PostgreSQL  
 **Caching:** Redis  
 **Real-time/Media:** Janus (WebRTC), private S3 (consent-based recordings)
 
-#### Why This Matters for Positioning
-A live, full-stack build in a genuinely sensitive domain (mental health), combining backend engineering, modern frontend, real-time media infrastructure, secure consent-based data handling, and a guardrailed, domain-specialized conversational AI already in production — a concrete proof point for "Applied AI Systems Engineer," built solo, end to end.
+#### Status
+Closed. No longer usable as a "currently live" proof point in interviews, the CV, or the site — if Souvik wants to discuss it in an interview, frame it strictly in the past tense as a completed, since-closed project, not an ongoing one.
 
 ---
 
-### 4b. Quantbot Securities — Founder & ML / Backend Engineer (predecessor to mySerenity.in)
-**Dates:** Jan 2021–early 2026 (shut down due to regulatory constraints; company pivoted to mySerenity.in above)
+### 4b. Quantbot Securities — Founder & ML / Backend Engineer
+**Dates:** Jan 2021–early 2026 (shut down due to regulatory constraints)
 **Role:** Co-founder; ML modeling + backend architecture
 **Note:** Independent personal project, built and run in parallel with full-time employment, not a full-time role
 
@@ -249,8 +249,8 @@ A live, full-stack build in a genuinely sensitive domain (mental health), combin
 
 #### Current Status
 - Platform shut down in early 2026 due to regulatory constraints on retail algorithmic copy-trading
-- Company pivoted to a new brand and product: mySerenity.in (see entry 4a above) — same entity, new identity, direct continuation of the founder journey
-- The agentic-workflow/multi-agent-orchestration learning goals originally planned for Quantbot's trading platform are no longer applicable to that platform; any agentic AI work now happens in the context of mySerenity.in / ARIA instead
+- The company was subsequently pivoted into mySerenity.in (see entry 4a above, closed Sept 2026) — that venture has since also closed; there is currently no active personal-project company under this founder journey
+- The agentic-workflow/multi-agent-orchestration learning goals originally planned for Quantbot's trading platform are no longer applicable to that platform, and are not currently being pursued via any active personal project
 
 ---
 
@@ -611,7 +611,7 @@ ai-engineering-lab/
 │   ├── code/ (GitHub Actions, Prometheus, alerting)
 │   ├── tests/
 │   └── benchmark.py
-└── 12-myserenity-experiments/
+└── 12-agentic-experiments/
     ├── README.md (trading bot + agentic enhancements)
     ├── notes.md (learnings, architecture decisions)
     ├── code/ (agents, memory, tool calling, eval)
@@ -694,7 +694,7 @@ A professional who combines:
 ## Flagship Project (Historical): Quantbot Copy-Trading Platform — Shut Down
 
 **What:** Quantitative copy-trading platform with AI-powered enhancements  
-**Status:** Shut down in early 2026 due to regulatory constraints on retail algorithmic copy-trading. The roadmap below was the original plan while the platform was still operating; it is no longer being pursued, since the platform itself no longer exists. Retained here for historical accuracy only — see "Flagship Project: mySerenity.in" below for the current, active founder project (same company, new brand).
+**Status:** Shut down in early 2026 due to regulatory constraints on retail algorithmic copy-trading. The roadmap below was the original plan while the platform was still operating; it is no longer being pursued, since the platform itself no longer exists. Retained here for historical accuracy only. The company was later pivoted into mySerenity.in, which has itself since closed (see "Flagship Project (Historical, CLOSED): mySerenity.in" below) — there is currently no active personal-project company under this founder journey.
 
 **Original plan while operating (no longer active):**
 
@@ -708,9 +708,11 @@ A professional who combines:
 
 ---
 
-## Flagship Project: mySerenity.in — Mental Health Platform
+## Flagship Project (Historical, CLOSED): mySerenity.in — Mental Health Platform
 
-**What:** A platform connecting individuals with mental health professionals (psychiatrists and psychologists). Development started January 2026; live at myserenity.in since June 2026 (took time to build properly). Built under the same company/entity as Quantbot Securities, after Quantbot's copy-trading platform was shut down due to regulatory constraints — a founder pivot into a new domain and identity, not an unrelated side project.
+**Status:** Closed as of 2026-09-29. Removed entirely from the live site and CV per Souvik's explicit instruction. This section is retained only for historical accuracy — do not present it as an active or current project anywhere.
+
+**What (historical):** A platform connecting individuals with mental health professionals (psychiatrists and psychologists). Development started January 2026; live at myserenity.in from June 2026 until its closure in September 2026. Built under the same company/entity as Quantbot Securities, after Quantbot's copy-trading platform was shut down due to regulatory constraints — a founder pivot into a new domain and identity, not an unrelated side project.
 
 **Core features:**
 - Community feature for individuals seeking mental health support
@@ -726,9 +728,9 @@ A professional who combines:
 - **Caching:** Redis
 - **Video/calls:** Janus (WebRTC media server), consent-based recording to private S3 buckets
 
-**Why this project matters for positioning:** This is a live, real-world, full-stack build in a genuinely sensitive domain (mental health), combining backend engineering (Django, Postgres, Redis), modern frontend (Next.js), real-time media infrastructure (Janus/WebRTC), secure data handling (private S3, consent-based recording), and a guardrailed, domain-specialized conversational AI (ARIA) already in production — not a hypothetical or planned system. It is a stronger, more concrete proof of "Applied AI Systems Engineer" capability than a demo project, since it required solving real safety, consent, and clinical-workflow constraints end to end.
+**Why this mattered (historical):** While live, this was a real-world, full-stack build in a genuinely sensitive domain (mental health), combining backend engineering (Django, Postgres, Redis), modern frontend (Next.js), real-time media infrastructure (Janus/WebRTC), secure data handling (private S3, consent-based recording), and a guardrailed, domain-specialized conversational AI already in production. It required solving real safety, consent, and clinical-workflow constraints end to end. **It is no longer active and should not be cited as an ongoing or current proof point.**
 
-**Note:** mySerenity.in is the same company as Quantbot, rebranded — a founder pivot after Quantbot's copy-trading platform was shut down due to regulatory constraints, not a separate unrelated venture. An earlier version of this profile incorrectly used "mySerenity" as an internal codename for Quantbot's planned trading-agent enhancements while Quantbot was still operating — that has been corrected here to reflect the actual pivot and current live product.
+**Note:** mySerenity.in was the same company as Quantbot, rebranded — a founder pivot after Quantbot's copy-trading platform was shut down due to regulatory constraints. The platform closed in September 2026. An earlier version of this profile incorrectly used "mySerenity" as an internal codename for Quantbot's planned trading-agent enhancements while Quantbot was still operating — that was corrected in an earlier revision, and this section is now closed out entirely following the September 2026 shutdown.
 
 ---
 
@@ -797,9 +799,9 @@ A professional who combines:
 |-----------|----------|-----------|
 | **Pillar 1 Complete** | Month 12 | Deep systems knowledge + 1 end-to-end pipeline built |
 | **ML Depth** | Month 8 | 4 Kaggle competitions, feature engineering mastery |
-| **AI Engineering** | Month 12 | RAG + agent system in production (mySerenity) |
+| **AI Engineering** | Month 12 | RAG + agent system in production (personal project) |
 | **Backend Excellence** | Month 18 | Multi-service microservice architecture deployed |
-| **Flagship Project** | Month 24 | mySerenity with 8+ major enhancements, public GitHub |
+| **Flagship Project** | Month 24 | Personal project with 8+ major enhancements, public GitHub |
 | **Thought Leadership** | Month 24 | 12 blog posts, 2K LinkedIn followers, speaking engagement |
 | **Role Readiness** | Month 30 | Interview-ready for Senior/Staff AI Systems Engineer roles |
 
@@ -827,7 +829,7 @@ A professional who combines:
 - **Behavioral:** Use professional experience stories (lead scoring impact, churn model deployment)
 - **Technical:** Prepare deep dives on systems design (feature pipeline, distributed training, etc.)
 - **Learning:** Show roadmap; express genuine interest in growth
-- **Projects:** Walk through mySerenity architecture; demonstrate systems thinking
+- **Projects:** Walk through Quantbot architecture (personal project, historical); demonstrate systems thinking
 
 ### For Personal Learning
 - Use roadmap as checklist; mark progress
@@ -863,10 +865,10 @@ A professional who combines:
 **Systems/Backend Role:**
 - Focus: Kubernetes orchestration, FastAPI backends, Docker containerization
 - Mention: Distributed systems learning, event-driven architecture (Kafka)
-- Highlight: mySerenity architecture, multi-service deployments
+- Highlight: Quantbot architecture (personal project, historical), multi-service deployments
 
 **AI/LLM Systems Role:**
-- Focus: mySerenity flagship project, AI agent frameworks, RAG systems
+- Focus: the Coursera agentic AI RCA workflow (Claude + Databricks via MCP), AI agent frameworks, RAG systems
 - Mention: Evaluation pipelines, observability, production AI
 - Highlight: Learning roadmap, commitment to systems + AI synthesis
 

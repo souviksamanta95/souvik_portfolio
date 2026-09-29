@@ -1,8 +1,10 @@
 # Future Plans
 
-## ARIA — Agentic Memory & Model Layer for mySerenity.in's Mental Health Chatbot
+## ARIA — Agentic Memory & Model Layer for mySerenity.in's Mental Health Chatbot [ABANDONED — mySerenity.in closed 2026-09-29]
 
-**Status:** Partially planned, partially already live — corrected 2026-07-23
+**Status:** ABANDONED. mySerenity.in was closed by Souvik on 2026-09-29; this plan is no longer being pursued and the platform it describes no longer exists. Retained below only for the reasoning trail, per this doc's own convention — do not treat any of it as active or upcoming work, and do not reference mySerenity/ARIA as current on the CV or site (both have been purged of these references).
+
+**Status (prior, now superseded):** Partially planned, partially already live — corrected 2026-07-23
 **Correction (2026-07-23):** This document originally conflated mySerenity with Quantbot (Souvik's trading platform) — that was wrong. mySerenity.in is a separate, real, live mental health platform built from scratch since January 2026 (Django, Next.js, Postgres, Redis, Janus for video, private S3 for consent-based recordings), with its own community feature, billing, and prescription management. Quantbot has no relation to it. See the corrected `Souvik_Professional_Profile.md` for the full, accurate picture of both projects.
 
 **Also corrected:** ARIA is not a from-scratch build — it already exists in production as a **guardrailed, specialized mental health chatbot** capable of long conversations with patients, and it **already summarizes conversations** to help psychiatrists/psychologists analyze patient state. The plan below was written assuming none of that existed yet. Sections 3 and 4 below (agentic retrieval decision, safety gate) describe capabilities ARIA may already have in some form — treat them as a discussion starting point to compare against the actual current implementation, not as greenfield work. Section 1 (dual local/hosted model backend) and section 2 (vector-DB-backed cross-session memory, if the current summarization isn't already vector-searchable) are more likely to still be genuine open enhancements, but confirm against the real codebase before treating any of this as a build plan.
