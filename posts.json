@@ -6,7 +6,11 @@
     "theme": "Entrepreneurship",
     "summary": "Quantbot was a copy-trading platform I built from scratch — ML signals, live execution, the works. The real lesson wasn't in the gains. It was in understanding what data can and can't tell you about human risk.",
     "url": "https://www.linkedin.com/posts/souviksamanta95_entrepreneurship-datascience-gratitude-activity-7454764047188713472-h8Wn",
-    "tags": ["Entrepreneurship", "DataScience", "Gratitude"]
+    "tags": [
+      "Entrepreneurship",
+      "DataScience",
+      "Gratitude"
+    ]
   },
   {
     "id": 3,
@@ -15,7 +19,12 @@
     "theme": "Career Story",
     "summary": "Impulsive resignation. No offer in hand. And a lesson about trusting your own decisions that I still carry.",
     "url": "https://www.linkedin.com/posts/souviksamanta95_careergrowth-datascience-believeinyourself-activity-7451864785257648128-46pa",
-    "tags": ["Career", "DataScience", "Growth"]
+    "tags": [
+      "Career",
+      "DataScience",
+      "Growth"
+    ],
+    "site": false
   },
   {
     "id": 2,
@@ -24,7 +33,12 @@
     "theme": "Personal",
     "summary": "Bengali family. Forced music classes. Discovered guitar in college. Now I play drums as a stress buster. Not productive. Just human.",
     "url": "https://www.linkedin.com/posts/souviksamanta95_mentalhealth-worklifebalance-personalgrowth-activity-7449328085721808896-Wpzp",
-    "tags": ["MentalHealth", "WorkLifeBalance", "PersonalGrowth"]
+    "tags": [
+      "MentalHealth",
+      "WorkLifeBalance",
+      "PersonalGrowth"
+    ],
+    "site": false
   },
   {
     "id": 1,
@@ -33,7 +47,11 @@
     "theme": "Professional Insight",
     "summary": "The tension between being accurate and being fast in data science. Perfectionism in analysis has a real cost — and it's usually paid by the business.",
     "url": "https://www.linkedin.com/posts/souviksamanta95_datascience-analytics-growthmindset-activity-7446791316576960512-c_Y9",
-    "tags": ["DataScience", "Analytics", "GrowthMindset"]
+    "tags": [
+      "DataScience",
+      "Analytics",
+      "GrowthMindset"
+    ]
   },
   {
     "id": 0,
@@ -42,6 +60,7 @@
     "theme": "Recognition",
     "summary": "An older post — update this summary with what the post was actually about.",
     "url": "https://www.linkedin.com/posts/souviksamanta95_nothing-makes-someone-more-happy-when-you-activity-7021114193588232192-uUuX",
-    "tags": []
+    "tags": [],
+    "site": false
   }
 ]
