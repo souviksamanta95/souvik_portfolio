@@ -201,9 +201,12 @@
     .step-n { font-family: var(--serif); font-size: 2rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
 
     /* Tools */
-    .tools { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; }
-    .q { padding: 16px 0; border-bottom: 1px solid var(--line); }
-    .q:last-of-type { border-bottom: 0; }
+    .tools { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; }
+    #questions { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; }
+    .q { padding: 16px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+    .q:nth-last-child(-n+2) { border-bottom: 0; }
+    .est-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 8px; }
+    .est-out { padding: 24px; border-radius: var(--radius); background: var(--accent-soft); }
     .q p { font-weight: 500; margin-bottom: 10px; font-size: 16px; }
     .opts { display: flex; gap: 8px; flex-wrap: wrap; }
     .opts input { position: absolute; opacity: 0; pointer-events: none; }
@@ -273,7 +276,10 @@
     /* Responsive */
     @media (max-width: 920px) {
       section { padding: 64px 0; }
-      .hero-grid, .about-grid, .tools, .contact-grid, .fit-box { grid-template-columns: 1fr; }
+      .hero-grid, .about-grid, .tools, .contact-grid, .fit-box, #questions, .est-grid { grid-template-columns: 1fr; }
+      .q:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .q:last-child { border-bottom: 0; }
+      .est-grid { gap: 24px; }
       .portrait img { margin: 0; max-width: 280px; }
       .portrait-tag { position: static; margin-top: 14px; max-width: none; }
       .proof, .g4 { grid-template-columns: repeat(2, 1fr); }
@@ -545,13 +551,19 @@
           <div class="card reveal">
             <h3>Value-at-stake estimator</h3>
             <p style="margin-bottom:18px">If part of your CRM and paid spend isn&rsquo;t incremental, here&rsquo;s roughly what that is worth.</p>
-            <label class="field"><span>Monthly CRM + paid marketing spend (USD)</span>
-              <input type="number" id="spend" min="0" step="1000" value="50000" inputmode="numeric" /></label>
-            <label class="field"><span>Share that may be non-incremental: <b id="pct-out">10%</b></span>
-              <input type="range" id="pct" min="2" max="30" value="10" /></label>
-            <div class="range-out" id="stake">$5,000 / month</div>
-            <p id="stake-year" style="color:var(--muted)">about $60,000 a year</p>
-            <p class="disclaimer">Illustrative arithmetic only, not a forecast. The real share is exactly what a measurement sprint would find out.</p>
+            <div class="est-grid">
+              <div>
+                <label class="field"><span>Monthly CRM + paid marketing spend (USD)</span>
+                  <input type="number" id="spend" min="0" step="1000" value="50000" inputmode="numeric" /></label>
+                <label class="field" style="margin-bottom:0"><span>Share that may be non-incremental: <b id="pct-out">10%</b></span>
+                  <input type="range" id="pct" min="2" max="30" value="10" /></label>
+              </div>
+              <div class="est-out">
+                <div class="range-out" id="stake">$5,000 / month</div>
+                <p id="stake-year" style="color:var(--muted)">about $60,000 a year</p>
+                <p class="disclaimer">Illustrative arithmetic only, not a forecast. The real share is exactly what a measurement sprint would find out.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
